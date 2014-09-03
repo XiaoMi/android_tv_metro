@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <item type="id" name="is_first_inflated_key"></item>
+    
+    <!-- menu item id define -->
+    <item type="id" name="menu_item_search"></item> 
+</resources>

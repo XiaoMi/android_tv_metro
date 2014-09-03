@@ -1,0 +1,495 @@
+
+Scanning .: .........................................................................................................................
+Scanning . (Phase 2): ................................
+res/drawable-xhdpi/account_photo_normal.png: Warning: The resource R.drawable.account_photo_normal appears to be unused [UnusedResources]
+res/drawable-xhdpi/add_handler.png: Warning: The resource R.drawable.add_handler appears to be unused [UnusedResources]
+res/drawable-xhdpi/arrow_left.png: Warning: The resource R.drawable.arrow_left appears to be unused [UnusedResources]
+res/drawable-xhdpi/arrow_right.png: Warning: The resource R.drawable.arrow_right appears to be unused [UnusedResources]
+res/drawable-xhdpi/back_arrow.png: Warning: The resource R.drawable.back_arrow appears to be unused [UnusedResources]
+res/drawable-xhdpi/blue_card.png: Warning: The resource R.drawable.blue_card appears to be unused [UnusedResources]
+res/drawable-xhdpi/button_normal.png: Warning: The resource R.drawable.button_normal appears to be unused [UnusedResources]
+res/drawable-xhdpi/button_pressed.png: Warning: The resource R.drawable.button_pressed appears to be unused [UnusedResources]
+res/drawable-xhdpi/buy_handler.png: Warning: The resource R.drawable.buy_handler appears to be unused [UnusedResources]
+res/values/colors.xml:3: Warning: The resource R.drawable.black_bg appears to be unused [UnusedResources]
+    <drawable name="black_bg">#00000000</drawable>
+              ~~~~~~~~~~~~~~~
+res/values/colors.xml:4: Warning: The resource R.drawable.color_hight_light appears to be unused [UnusedResources]
+    <drawable name="color_hight_light">#00A2ff</drawable>
+              ~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:5: Warning: The resource R.drawable.transparent appears to be unused [UnusedResources]
+    <drawable name="transparent">#00000000</drawable>
+              ~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:6: Warning: The resource R.drawable.half_transparent appears to be unused [UnusedResources]
+    <drawable name="half_transparent">#cc000000</drawable>
+              ~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:14: Warning: The resource R.color.available_space appears to be unused [UnusedResources]
+    <color name="available_space">#ff93de68</color>
+           ~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:15: Warning: The resource R.color.no_space appears to be unused [UnusedResources]
+    <color name="no_space">#ffeb3d3c</color>
+           ~~~~~~~~~~~~~~~
+res/values/colors.xml:16: Warning: The resource R.color.game_detail_color appears to be unused [UnusedResources]
+    <color name="game_detail_color">#ffe0e0e0</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:17: Warning: The resource R.color.space_shortage_bg appears to be unused [UnusedResources]
+    <color name="space_shortage_bg">#FF22242A</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:18: Warning: The resource R.color.uninstall_mask_bg appears to be unused [UnusedResources]
+    <color name="uninstall_mask_bg">#CC000000 </color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:22: Warning: The resource R.color.common_text_color appears to be unused [UnusedResources]
+    <color name="common_text_color">#FFFFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:23: Warning: The resource R.color.common_text_shadow_color appears to be unused [UnusedResources]
+    <color name="common_text_shadow_color">#7f000000</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:25: Warning: The resource R.color.text_color_white_10 appears to be unused [UnusedResources]
+    <color name="text_color_white_10">#19FFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:26: Warning: The resource R.color.text_color_white_15 appears to be unused [UnusedResources]
+    <color name="text_color_white_15">#26FFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:27: Warning: The resource R.color.text_color_white_20 appears to be unused [UnusedResources]
+    <color name="text_color_white_20">#33FFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:28: Warning: The resource R.color.text_color_white_30 appears to be unused [UnusedResources]
+    <color name="text_color_white_30">#4CFFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:29: Warning: The resource R.color.text_color_white_40 appears to be unused [UnusedResources]
+    <color name="text_color_white_40">#66FFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:30: Warning: The resource R.color.text_color_white_50 appears to be unused [UnusedResources]
+    <color name="text_color_white_50">#80FFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:31: Warning: The resource R.color.text_color_white_60 appears to be unused [UnusedResources]
+    <color name="text_color_white_60">#99FFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:32: Warning: The resource R.color.text_color_white_70 appears to be unused [UnusedResources]
+    <color name="text_color_white_70">#B3FFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:33: Warning: The resource R.color.text_color_white_75 appears to be unused [UnusedResources]
+    <color name="text_color_white_75">#C0FFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:34: Warning: The resource R.color.text_color_white_80 appears to be unused [UnusedResources]
+    <color name="text_color_white_80">#CCFFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:35: Warning: The resource R.color.text_color_white_90 appears to be unused [UnusedResources]
+    <color name="text_color_white_90">#E6FFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:37: Warning: The resource R.color.text_color_black_10 appears to be unused [UnusedResources]
+    <color name="text_color_black_10">#19000000</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:38: Warning: The resource R.color.text_color_black_20 appears to be unused [UnusedResources]
+    <color name="text_color_black_20">#33000000</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:39: Warning: The resource R.color.text_color_black_30 appears to be unused [UnusedResources]
+    <color name="text_color_black_30">#4C000000</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:40: Warning: The resource R.color.text_color_black_40 appears to be unused [UnusedResources]
+    <color name="text_color_black_40">#66000000</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:41: Warning: The resource R.color.text_color_black_50 appears to be unused [UnusedResources]
+    <color name="text_color_black_50">#80000000</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:42: Warning: The resource R.color.text_color_black_60 appears to be unused [UnusedResources]
+    <color name="text_color_black_60">#99000000</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:43: Warning: The resource R.color.text_color_black_70 appears to be unused [UnusedResources]
+    <color name="text_color_black_70">#B3000000</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:44: Warning: The resource R.color.text_color_black_80 appears to be unused [UnusedResources]
+    <color name="text_color_black_80">#CC000000</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:45: Warning: The resource R.color.text_color_black_90 appears to be unused [UnusedResources]
+    <color name="text_color_black_90">#E6000000</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/colors.xml:46: Warning: The resource R.color.text_color_black_100 appears to be unused [UnusedResources]
+    <color name="text_color_black_100">#FE000000</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/drawable-xhdpi/dialog_bg.9.png: Warning: The resource R.drawable.dialog_bg appears to be unused [UnusedResources]
+res/drawable-xhdpi/dialog_bg_mask.png: Warning: The resource R.drawable.dialog_bg_mask appears to be unused [UnusedResources]
+res/values/dimens.xml:3: Warning: The resource R.dimen.text_size_16 appears to be unused [UnusedResources]
+    <dimen name="text_size_16">8dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:4: Warning: The resource R.dimen.text_size_18 appears to be unused [UnusedResources]
+    <dimen name="text_size_18">9dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:5: Warning: The resource R.dimen.text_size_20 appears to be unused [UnusedResources]
+    <dimen name="text_size_20">10dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:6: Warning: The resource R.dimen.text_size_22 appears to be unused [UnusedResources]
+    <dimen name="text_size_22">11dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:7: Warning: The resource R.dimen.text_size_24 appears to be unused [UnusedResources]
+    <dimen name="text_size_24">12dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:8: Warning: The resource R.dimen.text_size_25 appears to be unused [UnusedResources]
+    <dimen name="text_size_25">12.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:9: Warning: The resource R.dimen.text_size_26 appears to be unused [UnusedResources]
+    <dimen name="text_size_26">13dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:10: Warning: The resource R.dimen.text_size_28 appears to be unused [UnusedResources]
+    <dimen name="text_size_28">14dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:11: Warning: The resource R.dimen.text_size_30 appears to be unused [UnusedResources]
+    <dimen name="text_size_30">15dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:12: Warning: The resource R.dimen.text_size_32 appears to be unused [UnusedResources]
+    <dimen name="text_size_32">16dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:13: Warning: The resource R.dimen.text_size_33 appears to be unused [UnusedResources]
+    <dimen name="text_size_33">16.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:14: Warning: The resource R.dimen.text_size_34 appears to be unused [UnusedResources]
+    <dimen name="text_size_34">17dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:15: Warning: The resource R.dimen.text_size_35 appears to be unused [UnusedResources]
+    <dimen name="text_size_35">17.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:16: Warning: The resource R.dimen.text_size_36 appears to be unused [UnusedResources]
+    <dimen name="text_size_36">18dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:18: Warning: The resource R.dimen.text_size_40 appears to be unused [UnusedResources]
+    <dimen name="text_size_40">20dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:19: Warning: The resource R.dimen.text_size_42 appears to be unused [UnusedResources]
+    <dimen name="text_size_42">21dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:20: Warning: The resource R.dimen.text_size_44 appears to be unused [UnusedResources]
+    <dimen name="text_size_44">22dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:21: Warning: The resource R.dimen.text_size_46 appears to be unused [UnusedResources]
+    <dimen name="text_size_46">23dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:22: Warning: The resource R.dimen.text_size_48 appears to be unused [UnusedResources]
+    <dimen name="text_size_48">24dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:24: Warning: The resource R.dimen.text_size_52 appears to be unused [UnusedResources]
+    <dimen name="text_size_52">26dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:25: Warning: The resource R.dimen.text_size_54 appears to be unused [UnusedResources]
+    <dimen name="text_size_54">27dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:26: Warning: The resource R.dimen.text_size_56 appears to be unused [UnusedResources]
+    <dimen name="text_size_56">28dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:27: Warning: The resource R.dimen.text_size_66 appears to be unused [UnusedResources]
+    <dimen name="text_size_66">33dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:29: Warning: The resource R.dimen.progress_height appears to be unused [UnusedResources]
+    <dimen name="progress_height">12.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:30: Warning: The resource R.dimen.progress_game_item_width appears to be unused [UnusedResources]
+    <dimen name="progress_game_item_width">102.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:31: Warning: The resource R.dimen.progress_game_item_height appears to be unused [UnusedResources]
+    <dimen name="progress_game_item_height">8dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:32: Warning: The resource R.dimen.progress_horizontal_margin appears to be unused [UnusedResources]
+    <dimen name="progress_horizontal_margin">8.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:33: Warning: The resource R.dimen.v_progress_horizontal_margin appears to be unused [UnusedResources]
+    <dimen name="v_progress_horizontal_margin">11.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:35: Warning: The resource R.dimen.icon_width appears to be unused [UnusedResources]
+    <dimen name="icon_width">142dp</dimen>
+           ~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:36: Warning: The resource R.dimen.icon_name_text_size appears to be unused [UnusedResources]
+    <dimen name="icon_name_text_size">20dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:38: Warning: The resource R.dimen.detail_name_text_size appears to be unused [UnusedResources]
+    <dimen name="detail_name_text_size">14sp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:40: Warning: The resource R.dimen.title_margin_top appears to be unused [UnusedResources]
+    <dimen name="title_margin_top">15dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:42: Warning: The resource R.dimen.detail_middle_margin_top appears to be unused [UnusedResources]
+    <dimen name="detail_middle_margin_top">9dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:43: Warning: The resource R.dimen.detail_button_margin_top appears to be unused [UnusedResources]
+    <dimen name="detail_button_margin_top">24dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:45: Warning: The resource R.dimen.detail_game_icon_name_top_margin appears to be unused [UnusedResources]
+    <dimen name="detail_game_icon_name_top_margin">54dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:47: Warning: The resource R.dimen.screen_shot_grid_horizontal_spacing appears to be unused [UnusedResources]
+    <dimen name="screen_shot_grid_horizontal_spacing">19.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:48: Warning: The resource R.dimen.screen_shot_grid_vertical_spacing appears to be unused [UnusedResources]
+    <dimen name="screen_shot_grid_vertical_spacing">21dp</dimen>    
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:77: Warning: The resource R.dimen.screen_width appears to be unused [UnusedResources]
+    <dimen name="screen_width">870dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:78: Warning: The resource R.dimen.screen_width_negative appears to be unused [UnusedResources]
+    <dimen name="screen_width_negative">-870dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:84: Warning: The resource R.dimen.tab_category_margin_left appears to be unused [UnusedResources]
+    <dimen name="tab_category_margin_left">175dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:85: Warning: The resource R.dimen.tab_rank_margin_left appears to be unused [UnusedResources]
+    <dimen name="tab_rank_margin_left">280dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:86: Warning: The resource R.dimen.tab_user_margin_left appears to be unused [UnusedResources]
+    <dimen name="tab_user_margin_left">385dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:89: Warning: The resource R.dimen.tab_highlight_width appears to be unused [UnusedResources]
+    <dimen name="tab_highlight_width">75dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:98: Warning: The resource R.dimen.title_bar_left_margin appears to be unused [UnusedResources]
+    <dimen name="title_bar_left_margin">22.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:99: Warning: The resource R.dimen.title_bar_top_margin appears to be unused [UnusedResources]
+    <dimen name="title_bar_top_margin">24.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:100: Warning: The resource R.dimen.title_divider_left_margin appears to be unused [UnusedResources]
+    <dimen name="title_divider_left_margin">6dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:101: Warning: The resource R.dimen.title_divider_top_margin appears to be unused [UnusedResources]
+    <dimen name="title_divider_top_margin">-1dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:103: Warning: The resource R.dimen.category_scroll_margin_top appears to be unused [UnusedResources]
+    <dimen name="category_scroll_margin_top">78dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:104: Warning: The resource R.dimen.subject_scroll_margin_top appears to be unused [UnusedResources]
+    <dimen name="subject_scroll_margin_top">94dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:105: Warning: The resource R.dimen.category_item_focus_width appears to be unused [UnusedResources]
+    <dimen name="category_item_focus_width">172dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:106: Warning: The resource R.dimen.category_item_focus_height appears to be unused [UnusedResources]
+    <dimen name="category_item_focus_height">110dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:108: Warning: The resource R.dimen.game_info_margin_left appears to be unused [UnusedResources]
+    <dimen name="game_info_margin_left">70dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:109: Warning: The resource R.dimen.game_info_margin_top appears to be unused [UnusedResources]
+    <dimen name="game_info_margin_top">71.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:110: Warning: The resource R.dimen.game_info_divider_margin_top appears to be unused [UnusedResources]
+    <dimen name="game_info_divider_margin_top">15dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:111: Warning: The resource R.dimen.game_thumb_height appears to be unused [UnusedResources]
+    <dimen name="game_thumb_height">180dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:112: Warning: The resource R.dimen.game_thumb_margin_top appears to be unused [UnusedResources]
+    <dimen name="game_thumb_margin_top">27.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:113: Warning: The resource R.dimen.game_divider_margin_top_55px appears to be unused [UnusedResources]
+    <dimen name="game_divider_margin_top_55px">27.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:114: Warning: The resource R.dimen.game_margin_top_50px appears to be unused [UnusedResources]
+    <dimen name="game_margin_top_50px">25dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:115: Warning: The resource R.dimen.game_margin_top_20px appears to be unused [UnusedResources]
+    <dimen name="game_margin_top_20px">10dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:116: Warning: The resource R.dimen.game_divider_margin_top_10px appears to be unused [UnusedResources]
+    <dimen name="game_divider_margin_top_10px">5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:117: Warning: The resource R.dimen.game_divider_margin_top_20px appears to be unused [UnusedResources]
+    <dimen name="game_divider_margin_top_20px">10dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:118: Warning: The resource R.dimen.game_divider_margin_bottom_50px appears to be unused [UnusedResources]
+    <dimen name="game_divider_margin_bottom_50px">25dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:119: Warning: The resource R.dimen.game_margin_top_372px appears to be unused [UnusedResources]
+    <dimen name="game_margin_top_372px">186dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:120: Warning: The resource R.dimen.screen_shot_item_focus_width appears to be unused [UnusedResources]
+    <dimen name="screen_shot_item_focus_width">366dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:121: Warning: The resource R.dimen.screen_shot_item_focus_height appears to be unused [UnusedResources]
+    <dimen name="screen_shot_item_focus_height">226dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:122: Warning: The resource R.dimen.relative_item_focus_width appears to be unused [UnusedResources]
+    <dimen name="relative_item_focus_width">172dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:123: Warning: The resource R.dimen.relative_item_focus_height appears to be unused [UnusedResources]
+    <dimen name="relative_item_focus_height">110dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:124: Warning: The resource R.dimen.base_grid_item_width appears to be unused [UnusedResources]
+    <dimen name="base_grid_item_width">172dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:125: Warning: The resource R.dimen.base_grid_item_height appears to be unused [UnusedResources]
+    <dimen name="base_grid_item_height">110dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:127: Warning: The resource R.dimen.game_icon_item_width appears to be unused [UnusedResources]
+    <dimen name="game_icon_item_width">142dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:128: Warning: The resource R.dimen.game_icon_item_height appears to be unused [UnusedResources]
+    <dimen name="game_icon_item_height">80dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:129: Warning: The resource R.dimen.container_margin_left appears to be unused [UnusedResources]
+    <dimen name="container_margin_left">77.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:130: Warning: The resource R.dimen.item_default_height appears to be unused [UnusedResources]
+    <dimen name="item_default_height">130dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:131: Warning: The resource R.dimen.item_horizontal_space appears to be unused [UnusedResources]
+    <dimen name="item_horizontal_space">39dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:132: Warning: The resource R.dimen.container_place_holder_height appears to be unused [UnusedResources]
+    <dimen name="container_place_holder_height">130dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:134: Warning: The resource R.dimen.screen_shot_thumb_width appears to be unused [UnusedResources]
+    <dimen name="screen_shot_thumb_width">320dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:135: Warning: The resource R.dimen.screen_shot_thumb_height appears to be unused [UnusedResources]
+    <dimen name="screen_shot_thumb_height">180dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:137: Warning: The resource R.dimen.focus_screen_shot_thumb_x_diff appears to be unused [UnusedResources]
+    <dimen name="focus_screen_shot_thumb_x_diff">23dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:138: Warning: The resource R.dimen.focus_screen_shot_thumb_y_diff appears to be unused [UnusedResources]
+    <dimen name="focus_screen_shot_thumb_y_diff">23dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:139: Warning: The resource R.dimen.left_margin appears to be unused [UnusedResources]
+    <dimen name="left_margin">70dp</dimen>
+           ~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:140: Warning: The resource R.dimen.game_info_right_margin appears to be unused [UnusedResources]
+    <dimen name="game_info_right_margin">55dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:141: Warning: The resource R.dimen.horizontal_margin appears to be unused [UnusedResources]
+    <dimen name="horizontal_margin">38dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:142: Warning: The resource R.dimen.item_border_width appears to be unused [UnusedResources]
+    <dimen name="item_border_width">15dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:143: Warning: The resource R.dimen.item_border_height appears to be unused [UnusedResources]
+    <dimen name="item_border_height">15dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:144: Warning: The resource R.dimen.item_margin_h appears to be unused [UnusedResources]
+    <dimen name="item_margin_h">30dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:145: Warning: The resource R.dimen.FOCUS_DIFF_X appears to be unused [UnusedResources]
+    <dimen name="FOCUS_DIFF_X">15dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:146: Warning: The resource R.dimen.FOCUS_DIFF_Y appears to be unused [UnusedResources]
+    <dimen name="FOCUS_DIFF_Y">15dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:147: Warning: The resource R.dimen.progress_top_mafgin appears to be unused [UnusedResources]
+    <dimen name="progress_top_mafgin">15dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:148: Warning: The resource R.dimen.summary_margin_top appears to be unused [UnusedResources]
+    <dimen name="summary_margin_top">72dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:149: Warning: The resource R.dimen.seekbar_left_margin appears to be unused [UnusedResources]
+    <dimen name="seekbar_left_margin">15dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:151: Warning: The resource R.dimen.DIALOG_WIDTH appears to be unused [UnusedResources]
+    <dimen name="DIALOG_WIDTH">637.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:152: Warning: The resource R.dimen.DIALOG_HEIGHT appears to be unused [UnusedResources]
+    <dimen name="DIALOG_HEIGHT">372.5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:154: Warning: The resource R.dimen.ACCOUNT_ITEM_SIZE appears to be unused [UnusedResources]
+    <dimen name="ACCOUNT_ITEM_SIZE">93dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:155: Warning: The resource R.dimen.account_top_margin appears to be unused [UnusedResources]
+    <dimen name="account_top_margin">65dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:156: Warning: The resource R.dimen.mine_view_left_margin appears to be unused [UnusedResources]
+    <dimen name="mine_view_left_margin">3dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:157: Warning: The resource R.dimen.mine_mirror_view_width appears to be unused [UnusedResources]
+    <dimen name="mine_mirror_view_width">201dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:158: Warning: The resource R.dimen.mine_mirror_view_height appears to be unused [UnusedResources]
+    <dimen name="mine_mirror_view_height">100dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:159: Warning: The resource R.dimen.MIRROR_HEIGHTER appears to be unused [UnusedResources]
+    <dimen name="MIRROR_HEIGHTER">93dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:160: Warning: The resource R.dimen.right_space_width appears to be unused [UnusedResources]
+    <dimen name="right_space_width">80dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:161: Warning: The resource R.dimen.TAB_HORIZONTAL_MARGIN appears to be unused [UnusedResources]
+    <dimen name="TAB_HORIZONTAL_MARGIN">120dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:162: Warning: The resource R.dimen.ITEM_FOCUS_DIFF_X appears to be unused [UnusedResources]
+    <dimen name="ITEM_FOCUS_DIFF_X">10dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/dimens.xml:174: Warning: The resource R.dimen.detail_y_distance appears to be unused [UnusedResources]
+    <dimen name="detail_y_distance">423dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res/drawable-xhdpi/divider.png: Warning: The resource R.drawable.divider appears to be unused [UnusedResources]
+res/drawable-xhdpi/focus.9.png: Warning: The resource R.drawable.focus appears to be unused [UnusedResources]
+res/drawable-xhdpi/game_detail_content_bottom_mask.9.png: Warning: The resource R.drawable.game_detail_content_bottom_mask appears to be unused [UnusedResources]
+res/drawable-xhdpi/game_detail_mask.png: Warning: The resource R.drawable.game_detail_mask appears to be unused [UnusedResources]
+res/drawable-xhdpi/guide_bg.jpg: Warning: The resource R.drawable.guide_bg appears to be unused [UnusedResources]
+res/drawable-xhdpi/handler_connect_success.png: Warning: The resource R.drawable.handler_connect_success appears to be unused [UnusedResources]
+res/drawable-xhdpi/handler_loading.png: Warning: The resource R.drawable.handler_loading appears to be unused [UnusedResources]
+res/drawable-xhdpi/handler_mode.png: Warning: The resource R.drawable.handler_mode appears to be unused [UnusedResources]
+res/drawable-xhdpi/handler_start_searching.png: Warning: The resource R.drawable.handler_start_searching appears to be unused [UnusedResources]
+res/drawable-xhdpi/handler_url.png: Warning: The resource R.drawable.handler_url appears to be unused [UnusedResources]
+res/drawable-xhdpi/icon_default_app.png: Warning: The resource R.drawable.icon_default_app appears to be unused [UnusedResources]
+res/drawable-xhdpi/icon_screenshot.9.png: Warning: The resource R.drawable.icon_screenshot appears to be unused [UnusedResources]
+res/drawable-xhdpi/install_icon_select.png: Warning: The resource R.drawable.install_icon_select appears to be unused [UnusedResources]
+res/drawable-xhdpi/list_bottom_normal.png: Warning: The resource R.drawable.list_bottom_normal appears to be unused [UnusedResources]
+res/drawable-xhdpi/list_focus.png: Warning: The resource R.drawable.list_focus appears to be unused [UnusedResources]
+res/drawable-xhdpi/list_middle_normal.png: Warning: The resource R.drawable.list_middle_normal appears to be unused [UnusedResources]
+res/drawable-xhdpi/list_top_normal.png: Warning: The resource R.drawable.list_top_normal appears to be unused [UnusedResources]
+res/drawable-xhdpi/loading_bar1.png: Warning: The resource R.drawable.loading_bar1 appears to be unused [UnusedResources]
+res/drawable-xhdpi/loading_bar2.png: Warning: The resource R.drawable.loading_bar2 appears to be unused [UnusedResources]
+res/drawable-xhdpi/loading_bar3.png: Warning: The resource R.drawable.loading_bar3 appears to be unused [UnusedResources]
+res/drawable-xhdpi/loading_bar4.png: Warning: The resource R.drawable.loading_bar4 appears to be unused [UnusedResources]
+res/drawable-xhdpi/loading_bar5.png: Warning: The resource R.drawable.loading_bar5 appears to be unused [UnusedResources]
+res/drawable-xhdpi/main_bg.png: Warning: The resource R.drawable.main_bg appears to be unused [UnusedResources]
+res/drawable-xhdpi/mask_left.png: Warning: The resource R.drawable.mask_left appears to be unused [UnusedResources]
+res/drawable-xhdpi/mask_right.png: Warning: The resource R.drawable.mask_right appears to be unused [UnusedResources]
+res/drawable-xhdpi/mine_account.png: Warning: The resource R.drawable.mine_account appears to be unused [UnusedResources]
+res/drawable-xhdpi/mine_handler.png: Warning: The resource R.drawable.mine_handler appears to be unused [UnusedResources]
+res/drawable-xhdpi/nav_highlight.png: Warning: The resource R.drawable.nav_highlight appears to be unused [UnusedResources]
+res/drawable-xhdpi/operator_controller.png: Warning: The resource R.drawable.operator_controller appears to be unused [UnusedResources]
+res/drawable-xhdpi/operator_controller_big.png: Warning: The resource R.drawable.operator_controller_big appears to be unused [UnusedResources]
+res/drawable-xhdpi/operator_handler_big.png: Warning: The resource R.drawable.operator_handler_big appears to be unused [UnusedResources]
+res/drawable-xhdpi/operator_mouse.png: Warning: The resource R.drawable.operator_mouse appears to be unused [UnusedResources]
+res/drawable-xhdpi/operator_mouse_big.png: Warning: The resource R.drawable.operator_mouse_big appears to be unused [UnusedResources]
+res/drawable-xhdpi/progress_bar_bg.9.png: Warning: The resource R.drawable.progress_bar_bg appears to be unused [UnusedResources]
+res/drawable-xhdpi/progress_bar_fg.9.png: Warning: The resource R.drawable.progress_bar_fg appears to be unused [UnusedResources]
+res/anim/recommend_translate_in.xml: Warning: The resource R.anim.recommend_translate_in appears to be unused [UnusedResources]
+res/anim/recommend_translate_out.xml: Warning: The resource R.anim.recommend_translate_out appears to be unused [UnusedResources]
+res/drawable-xhdpi/screen_view_seekpoint_highlight.png: Warning: The resource R.drawable.screen_view_seekpoint_highlight appears to be unused [UnusedResources]
+res/drawable-xhdpi/screen_view_seekpoint_normal.png: Warning: The resource R.drawable.screen_view_seekpoint_normal appears to be unused [UnusedResources]
+res/drawable-xhdpi/screenshot_browse_foucs.9.png: Warning: The resource R.drawable.screenshot_browse_foucs appears to be unused [UnusedResources]
+res/drawable-xhdpi/screenshot_mask_left.png: Warning: The resource R.drawable.screenshot_mask_left appears to be unused [UnusedResources]
+res/drawable-xhdpi/screenshot_mask_right.png: Warning: The resource R.drawable.screenshot_mask_right appears to be unused [UnusedResources]
+res/drawable-xhdpi/small_button_normal.png: Warning: The resource R.drawable.small_button_normal appears to be unused [UnusedResources]
+res/drawable-xhdpi/small_button_pressed.png: Warning: The resource R.drawable.small_button_pressed appears to be unused [UnusedResources]
+res/values/strings.xml:8: Warning: The resource R.string.fzlt_hei appears to be unused [UnusedResources]
+ <string name="fzlt_hei">FZLTH_GBK.ttf</string>
+         ~~~~~~~~~~~~~~~
+res/values/strings.xml:11: Warning: The resource R.string.nav_tab_focus_ttf appears to be unused [UnusedResources]
+ <string name="nav_tab_focus_ttf">@string/fzlt_cu_hei</string>
+         ~~~~~~~~~~~~~~~~~~~~~~~~
+res/values/strings.xml:13: Warning: The resource R.string.tab_recommend appears to be unused [UnusedResources]
+ <string name="tab_recommend">推荐</string>
+         ~~~~~~~~~~~~~~~~~~~~
+res/values/strings.xml:14: Warning: The resource R.string.tab_category appears to be unused [UnusedResources]
+    <string name="tab_category">分类</string>
+            ~~~~~~~~~~~~~~~~~~~
+res/values/strings.xml:15: Warning: The resource R.string.tab_rank appears to be unused [UnusedResources]
+    <string name="tab_rank">排行</string>
+            ~~~~~~~~~~~~~~~
+res/values/strings.xml:16: Warning: The resource R.string.tab_user appears to be unused [UnusedResources]
+ <string name="tab_user">用户</string>
+         ~~~~~~~~~~~~~~~
+res/values/strings.xml:19: Warning: The resource R.string.nav_tab_category appears to be unused [UnusedResources]
+ <string name="nav_tab_category">分类</string>
+         ~~~~~~~~~~~~~~~~~~~~~~~
+res/values/strings.xml:20: Warning: The resource R.string.nav_tab_rank appears to be unused [UnusedResources]
+ <string name="nav_tab_rank">排行</string>
+         ~~~~~~~~~~~~~~~~~~~
+res/values/strings.xml:21: Warning: The resource R.string.nav_tab_user appears to be unused [UnusedResources]
+ <string name="nav_tab_user">用户</string>
+         ~~~~~~~~~~~~~~~~~~~
+res/drawable-xhdpi/subject_mask.png: Warning: The resource R.drawable.subject_mask appears to be unused [UnusedResources]
+res/color/tab_text.xml: Warning: The resource R.color.tab_text appears to be unused [UnusedResources]
+res/drawable-xhdpi/tag_new.png: Warning: The resource R.drawable.tag_new appears to be unused [UnusedResources]
+res/drawable-xhdpi/title_divider.png: Warning: The resource R.drawable.title_divider appears to be unused [UnusedResources]
+res/drawable-xhdpi/title_icon_arrow.png: Warning: The resource R.drawable.title_icon_arrow appears to be unused [UnusedResources]
+res/drawable-xhdpi/video_screen_shot.png: Warning: The resource R.drawable.video_screen_shot appears to be unused [UnusedResources]
+res/drawable-xhdpi/video_thumb.png: Warning: The resource R.drawable.video_thumb appears to be unused [UnusedResources]
+0 errors, 205 warnings

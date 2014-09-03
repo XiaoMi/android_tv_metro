@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".MainActivity" >
+
+    <ScrollView
+        android:layout_width="400dp"
+        android:layout_alignParentLeft="true"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/txtDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hello_world" />
+    </ScrollView>
+    <ScrollView
+        android:layout_width="400dp"
+        android:layout_alignParentRight="true"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/txtDisplay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hello_world2" />
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

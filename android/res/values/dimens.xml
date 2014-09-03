@@ -1,0 +1,180 @@
+<resources>
+    
+    <dimen name="text_size_16">8dp</dimen>
+    <dimen name="text_size_18">9dp</dimen>
+    <dimen name="text_size_20">10dp</dimen>
+    <dimen name="text_size_22">11dp</dimen>
+    <dimen name="text_size_24">12dp</dimen>
+    <dimen name="text_size_25">12.5dp</dimen>
+    <dimen name="text_size_26">13dp</dimen>
+    <dimen name="text_size_28">14dp</dimen>
+    <dimen name="text_size_30">15dp</dimen>
+    <dimen name="text_size_32">16dp</dimen>
+    <dimen name="text_size_33">16.5dp</dimen>
+    <dimen name="text_size_34">17dp</dimen>
+    <dimen name="text_size_35">17.5dp</dimen>
+    <dimen name="text_size_36">18dp</dimen>
+    <dimen name="text_size_38">19dp</dimen>
+    <dimen name="text_size_40">20dp</dimen>
+    <dimen name="text_size_42">21dp</dimen>
+    <dimen name="text_size_44">22dp</dimen>
+    <dimen name="text_size_46">23dp</dimen>
+    <dimen name="text_size_48">24dp</dimen>
+    <dimen name="text_size_50">25dp</dimen>
+    <dimen name="text_size_52">26dp</dimen>
+    <dimen name="text_size_54">27dp</dimen>
+    <dimen name="text_size_56">28dp</dimen>
+    <dimen name="text_size_66">33dp</dimen>
+    
+    <dimen name="progress_height">12.5dp</dimen>
+    <dimen name="progress_game_item_width">102.5dp</dimen>
+    <dimen name="progress_game_item_height">8dp</dimen>
+    <dimen name="progress_horizontal_margin">8.5dp</dimen>
+    <dimen name="v_progress_horizontal_margin">11.5dp</dimen>
+    
+    <dimen name="icon_width">142dp</dimen>
+    <dimen name="icon_name_text_size">20dp</dimen>
+    
+    <dimen name="detail_name_text_size">14sp</dimen>
+    <dimen name="text_font_size_huge">21sp</dimen>
+    <dimen name="title_margin_top">15dp</dimen>
+  
+    <dimen name="detail_middle_margin_top">9dp</dimen>
+    <dimen name="detail_button_margin_top">24dp</dimen>
+    
+    <dimen name="detail_game_icon_name_top_margin">54dp</dimen>
+    
+    <dimen name="screen_shot_grid_horizontal_spacing">19.5dp</dimen>
+    <dimen name="screen_shot_grid_vertical_spacing">21dp</dimen>    
+    
+        <!-- menu -->
+    <dimen name="menu_title_text_size">@dimen/text_size_50</dimen>
+    <dimen name="menu_item_text_size">@dimen/text_size_38</dimen>
+    <dimen name="menu_cursor_width">252dp</dimen>
+    <dimen name="menu_cursor_height">145dp</dimen>
+    <dimen name="menu_cursor_margin_left">-22.5dp</dimen>
+    <dimen name="menu_cursor_margin_top">205dp</dimen>
+    <dimen name="menu_title_margin_left">105dp</dimen>
+    <dimen name="menu_title_margin_top">73.5dp</dimen>
+    <dimen name="menu_title_bottom_line_width">155dp</dimen>
+    <dimen name="menu_title_bottom_line_height">1.5dp</dimen>
+    <dimen name="menu_title_bottom_margin_top">8.5dp</dimen>
+    <dimen name="main_menu_panel_width">155dp</dimen>
+    <dimen name="main_menu_panel_height">385dp</dimen>
+    <dimen name="main_menu_panel_margin_top">120dp</dimen>
+    <dimen name="main_menu_listview_margin_left">11.5dp</dimen>
+    <dimen name="main_menu_listview_margin_top">-100dp</dimen>
+    <dimen name="main_menu_listview_height">475dp</dimen>
+    <dimen name="main_menu_mask_height">64dp</dimen>
+    <dimen name="menu_divider_width">131.5dp</dimen>
+    <dimen name="menu_divider_height">0.5dp</dimen>
+    <dimen name="menu_divider_margin_left">15dp</dimen>
+    <dimen name="menu_icon_width">64dp</dimen>
+    <dimen name="menu_icon_height">64dp</dimen>
+    <dimen name="menu_item_margin_left">4dp</dimen>
+    <dimen name="menu_top_space">224dp</dimen>
+    
+    <dimen name="screen_width">870dp</dimen>
+    <dimen name="screen_width_negative">-870dp</dimen>
+    
+    <!-- <dimen name="home_left_nav_width">300px</dimen> -->
+    <!-- <dimen name="nav_bar_height">200px</dimen> -->
+    <dimen name="nav_tab_text_size">@dimen/text_size_50</dimen>
+    <dimen name="tab_recommend_margin_left">75dp</dimen>
+    <dimen name="tab_category_margin_left">175dp</dimen>
+    <dimen name="tab_rank_margin_left">280dp</dimen>
+    <dimen name="tab_user_margin_left">385dp</dimen>
+    <!-- <dimen name="home_sub_nav_width">300px</dimen> -->
+    
+    <dimen name="tab_highlight_width">75dp</dimen>
+    <dimen name="tab_highlight_height">87dp</dimen>
+    
+    <dimen name="nav_bar_margin_top">20dp</dimen>
+    <dimen name="tab_content_container_margin_top">78dp</dimen>
+
+    <dimen name="metro_offside">118dp</dimen>
+
+    <dimen name="fading_edge">118dp</dimen>
+    <dimen name="title_bar_left_margin">22.5dp</dimen>
+    <dimen name="title_bar_top_margin">24.5dp</dimen>
+    <dimen name="title_divider_left_margin">6dp</dimen>
+    <dimen name="title_divider_top_margin">-1dp</dimen>
+
+    <dimen name="category_scroll_margin_top">78dp</dimen>
+    <dimen name="subject_scroll_margin_top">94dp</dimen>
+    <dimen name="category_item_focus_width">172dp</dimen>
+    <dimen name="category_item_focus_height">110dp</dimen>
+
+    <dimen name="game_info_margin_left">70dp</dimen>
+    <dimen name="game_info_margin_top">71.5dp</dimen>
+    <dimen name="game_info_divider_margin_top">15dp</dimen>
+    <dimen name="game_thumb_height">180dp</dimen>
+    <dimen name="game_thumb_margin_top">27.5dp</dimen>
+    <dimen name="game_divider_margin_top_55px">27.5dp</dimen>
+    <dimen name="game_margin_top_50px">25dp</dimen>
+    <dimen name="game_margin_top_20px">10dp</dimen>
+    <dimen name="game_divider_margin_top_10px">5dp</dimen>
+    <dimen name="game_divider_margin_top_20px">10dp</dimen>
+    <dimen name="game_divider_margin_bottom_50px">25dp</dimen>
+    <dimen name="game_margin_top_372px">186dp</dimen>
+    <dimen name="screen_shot_item_focus_width">366dp</dimen>
+    <dimen name="screen_shot_item_focus_height">226dp</dimen>
+    <dimen name="relative_item_focus_width">172dp</dimen>
+    <dimen name="relative_item_focus_height">110dp</dimen>
+    <dimen name="base_grid_item_width">172dp</dimen>
+    <dimen name="base_grid_item_height">110dp</dimen>
+
+    <dimen name="game_icon_item_width">142dp</dimen>
+    <dimen name="game_icon_item_height">80dp</dimen>
+    <dimen name="container_margin_left">77.5dp</dimen>
+    <dimen name="item_default_height">130dp</dimen>
+    <dimen name="item_horizontal_space">39dp</dimen>
+    <dimen name="container_place_holder_height">130dp</dimen>
+
+    <dimen name="screen_shot_thumb_width">320dp</dimen>
+    <dimen name="screen_shot_thumb_height">180dp</dimen>
+
+    <dimen name="focus_screen_shot_thumb_x_diff">23dp</dimen>
+    <dimen name="focus_screen_shot_thumb_y_diff">23dp</dimen>
+    <dimen name="left_margin">70dp</dimen>
+    <dimen name="game_info_right_margin">55dp</dimen>
+    <dimen name="horizontal_margin">38dp</dimen>
+    <dimen name="item_border_width">15dp</dimen>
+    <dimen name="item_border_height">15dp</dimen>
+    <dimen name="item_margin_h">30dp</dimen>
+    <dimen name="FOCUS_DIFF_X">15dp</dimen>
+    <dimen name="FOCUS_DIFF_Y">15dp</dimen>
+    <dimen name="progress_top_mafgin">15dp</dimen>
+    <dimen name="summary_margin_top">72dp</dimen>
+    <dimen name="seekbar_left_margin">15dp</dimen>
+
+    <dimen name="DIALOG_WIDTH">637.5dp</dimen>
+    <dimen name="DIALOG_HEIGHT">372.5dp</dimen>
+
+    <dimen name="ACCOUNT_ITEM_SIZE">93dp</dimen>
+    <dimen name="account_top_margin">65dp</dimen>
+    <dimen name="mine_view_left_margin">3dp</dimen>
+    <dimen name="mine_mirror_view_width">201dp</dimen>
+    <dimen name="mine_mirror_view_height">100dp</dimen>
+    <dimen name="MIRROR_HEIGHTER">93dp</dimen>
+    <dimen name="right_space_width">80dp</dimen>
+    <dimen name="TAB_HORIZONTAL_MARGIN">120dp</dimen>
+    <dimen name="ITEM_FOCUS_DIFF_X">10dp</dimen>
+
+    <dimen name="ITEM_DIVIDE_SIZE">3dp</dimen>
+    <dimen name="ITEM_V_WIDTH">201dp</dimen>
+    <dimen name="ITEM_V_HEIGHT">303dp</dimen>
+    <dimen name="ITEM_H_WIDTH">303dp</dimen>
+    <dimen name="ITEM_H_HEIGHT">150dp</dimen>
+    <dimen name="ITEM_NORMAL_SIZE">150dp</dimen>
+    <dimen name="OPERATOR_MARGIN">5dp</dimen>
+
+    <dimen name="metro_item_padding">5dp</dimen>
+    <dimen name="metro_item_recommend_text_height">30dp</dimen>
+    <dimen name="detail_y_distance">423dp</dimen>
+    
+    <dimen name="LINE_MOVE_DISTANCE">15dp</dimen>
+    <dimen name="mirror_ref_height">55dp</dimen>
+    <dimen name="tab_left_offset">75dp</dimen>
+    <dimen name="user_view_padding">6dp</dimen>
+</resources>

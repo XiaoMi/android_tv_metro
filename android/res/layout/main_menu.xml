@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xiaomi="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mask_tvmenu" />
+
+    <ImageSwitcher
+        android:id="@+id/cursor"
+        android:layout_width="@dimen/menu_cursor_width"
+        android:layout_height="@dimen/menu_cursor_height"
+        android:layout_gravity="top|left"
+        android:layout_marginLeft="@dimen/menu_cursor_margin_left"
+        android:layout_marginTop="@dimen/menu_cursor_margin_top" />
+
+    <LinearLayout
+        android:id="@+id/menu_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:orientation="vertical" >
+
+    <com.tv.ui.metro.view.TextViewWithTTF
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/menu_title_margin_left"
+            android:layout_marginTop="@dimen/menu_title_margin_top"
+            android:text="@string/menu_name"
+            android:textSize="@dimen/menu_title_text_size"
+            xiaomi:ttf_name="@string/category_title_ttf" />
+    
+    
+        <View
+            android:layout_width="@dimen/menu_title_bottom_line_width"
+            android:layout_height="@dimen/menu_title_bottom_line_height"
+            android:layout_marginTop="@dimen/menu_title_bottom_margin_top"
+            android:background="#80ffffff"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/main_menu_panel"
+        android:layout_width="@dimen/main_menu_panel_width"
+        android:layout_height="@dimen/main_menu_panel_height"
+        android:layout_gravity="left|top"
+        android:layout_marginTop="@dimen/main_menu_panel_margin_top">
+
+        <ListView
+            android:layout_marginLeft="@dimen/main_menu_listview_margin_left"
+            android:layout_marginTop="@dimen/main_menu_listview_margin_top"
+            android:id="@+id/main_menu_items"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/main_menu_listview_height"
+            android:layout_gravity="left|top"
+            android:divider="#00000000"
+            android:listSelector="#00000000"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+        
+        <View
+            android:id="@+id/mask_top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/main_menu_mask_height"
+            android:layout_gravity="left|top"
+            android:background="@drawable/mask_up" />
+
+        <View 
+            android:id="@+id/mask_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/main_menu_mask_height"
+            android:layout_gravity="left|bottom"
+            android:background="@drawable/mask_down" />
+    </FrameLayout>
+
+</merge>

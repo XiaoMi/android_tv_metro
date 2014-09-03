@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="tag_view_postion">0</integer>
+    <integer name="tag_view_focused_host_view">1</integer>
+    <integer name="scale_up_duration">200</integer>
+    <integer name="scale_down_duration">150</integer>
+    <integer name="update_duration">2000</integer>
+    <integer name="text_font_size_two_digit">40</integer>
+</resources>

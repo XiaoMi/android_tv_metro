@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <color name="text_color_shadow">#80ffffff</color>
+    <color name="text_color_highlight">#ffff7e00</color>
+    <color name="text_color_link">#ff307ab3</color>
+    <color name="text_color_primary">@android:color/white</color>
+    <color name="text_color_secondary">#66000000</color>
+    <color name="text_color_inverse">@android:color/white</color>
+    <color name="tab_normal">#99FFFFFF</color>
+    <color name="tab_pressed">#FFFFFFFF</color>
+    
+    <color name="white_50">#7fffffff</color>
+
+    <color name="common_text_color">#FFFFFFFF</color>
+    <color name="text_color_white_80">#CCFFFFFF</color>
+
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="HorizontalListview">
+        <attr name="width" format="dimension" />
+        <attr name="height" format="dimension" />
+        <attr name="item_width" format="dimension" />
+    </declare-styleable>
+    
+    <declare-styleable name="TextViewWithTTF">
+        <attr name="ttf_name" format="string" />
+    </declare-styleable>
+
+</resources>

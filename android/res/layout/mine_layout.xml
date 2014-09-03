@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+    
+    <RelativeLayout
+            android:id="@+id/account_info_bg"
+            android:layout_width="@dimen/ACCOUNT_ITEM_SIZE"
+            android:layout_height="@dimen/ACCOUNT_ITEM_SIZE"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/account_top_margin">
+
+        <com.tv.ui.metro.view.CenterIconImage
+                android:id="@+id/mine_action_view"
+                android:layout_width="@dimen/ACCOUNT_ITEM_SIZE"
+                android:layout_height="@dimen/ACCOUNT_ITEM_SIZE"
+                android:visibility="gone"
+                android:layout_centerInParent="true"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mine_info_pointer_view"
+                android:textSize="50sp"
+                android:textColor="@color/common_text_color"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:visibility="gone"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:id="@+id/mine_plus_view"
+                  android:textSize="20sp"
+                  android:textColor="@color/common_text_color"
+                  android:singleLine="true"
+                  android:ellipsize="end"
+                  android:visibility="gone"
+                  android:gravity="center"
+                  android:layout_centerInParent="true"
+                  android:layout_marginLeft="67dp"
+                  android:layout_marginTop="18.25dp"
+                />
+
+    </RelativeLayout>
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:id="@+id/mine_title_view"
+              android:textSize="18sp"
+              android:textColor="@color/common_text_color"
+              android:singleLine="true"
+              android:ellipsize="end"
+              android:layout_gravity="center_horizontal"
+              android:gravity="center"
+              android:layout_marginTop="20dp"
+            />
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:id="@+id/mine_small_view"
+              android:textSize="12sp"
+              android:textColor="@color/text_color_white_80"
+              android:singleLine="true"
+              android:ellipsize="end"
+              android:layout_gravity="center_horizontal"
+              android:gravity="center"
+              android:layout_marginTop="2dp"
+            />
+
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tv.ui.metro.view.TextViewWithTTF
+       xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:xiaomi="http://schemas.android.com/apk/res-auto"
+       android:id="@+id/tv_tab_indicator"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:paddingLeft="40dp"
+       android:paddingRight="40dp"
+       android:minHeight="@dimen/tab_highlight_height"
+       android:gravity="center"
+       android:layout_gravity="center_vertical"
+       android:layout_marginLeft="@dimen/tab_recommend_margin_left"       
+       android:textSize="@dimen/nav_tab_text_size"
+       android:textColor="@color/white_50"
+       xiaomi:ttf_name="@string/nav_tab_normal_ttf"
+       android:background="@drawable/tab_title_background"
+/>
