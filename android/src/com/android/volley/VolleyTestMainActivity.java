@@ -1,26 +1,17 @@
-package com.tv.ui.metro.volleytest;
-
-import org.json.JSONObject;
+package com.android.volley;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
-import com.android.volley.Cache;
-import com.android.volley.Network;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.tv.ui.metro.R;
+import org.json.JSONObject;
 
-public class MainActivity extends Activity {
+public class VolleyTestMainActivity extends Activity {
 
 	private TextView txtDisplay;
 	private RequestQueue mRequestQueue;

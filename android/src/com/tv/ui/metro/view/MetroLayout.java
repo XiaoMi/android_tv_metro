@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import com.tv.ui.metro.R;
 import com.tv.ui.metro.Utils;
-import android.view.FocusFinder;
 import android.util.Log;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -74,6 +73,8 @@ public class MetroLayout extends FrameLayout implements View.OnFocusChangeListen
         }
 
 		mDensityScale = 1;//mContext.getResources().getDisplayMetrics().densityDpi/320.0f;
+        setClipChildren(false);
+        setClipToPadding(false);
 	}
 
 	public View getItemView(int index){
