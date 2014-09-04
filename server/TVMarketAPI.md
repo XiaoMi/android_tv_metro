@@ -70,6 +70,7 @@
     ```
 
 * `ImageGroup` 一组图片，有背景图和其他覆盖在其上面的图片
+
 	```
     {
     	"bg": {Image}, // 背景图
@@ -82,6 +83,7 @@
     ```
 
 * `UI` 关于UI显示的相关信息
+
 	```
     {
     	"type": "..."，// 当前UI的UI Type
@@ -91,7 +93,9 @@
         }
     }
     ```
+
 * `DisplayItem` 作为一个**Item**在列表中展示的基本Fields
+
 	```
     {
     	"ns": "app|game|video", // Namespace
@@ -104,6 +108,7 @@
     ```
 
 * `Item` **Item**完整公用信息(对于App或Game来说还有各自的信息)
+
 	```
     // extends DisplayItem
     {
@@ -146,6 +151,7 @@
     ```
 
 * `Album` **Album**信息，包含有**Item**的列表
+
 	```
     // extends DisplayItem
     {
@@ -161,6 +167,7 @@
     ```
 
 * `AlbumList` 多页`Album`
+
 	```
     {
     	"body": [{Album}, {Album}, ...]
@@ -173,6 +180,7 @@
     }
     ```
 * `ItemList`
+
 	```
     {
     	"body": [{Item}, {Item}],
@@ -200,11 +208,12 @@
 
 ### API 列表
 * **GET** `/1/{ns}/category?id={id}&sort={sort}&page={page}&filter=...` 返回`{AlbumList}`
-* **GET** `/1/{ns}/album?id={id}`，返回: `{AlbumList}`
-    获取**Album**内容
-    1. `page`是基于1的，默认值为`1`
+	获取**Category**内容
+	1. `page`是基于1的，默认值为`1`
     1. `sort`参数对非**Category**类**Album**不起作用
 
+* **GET** `/1/{ns}/album?id={id}`，返回: `{AlbumList}`
+    获取**Album**内容
 
 * **GET** `/1/{ns}/search?q=word&category=c1/c2`，返回: `{AlbumList}`
 	搜索
