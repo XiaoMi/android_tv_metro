@@ -1,7 +1,9 @@
 package com.xiaomi.mitv.app.loader;
 
 import android.content.Context;
+
 import com.tv.ui.metro.loader.ItemLoader;
+import com.tv.ui.metro.model.DisplayItem;
 import com.tv.ui.metro.model.Item;
 
 /**
@@ -19,7 +21,7 @@ public class AppItemLoader extends ItemLoader<Item> {
     }
 
     @Override
-    public void setLoaderURL() {
+    public void setLoaderURL(DisplayItem _item) {
 
     }
 

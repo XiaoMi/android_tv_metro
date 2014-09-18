@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -31,17 +32,11 @@ import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 
-import com.android.volley.Response.ErrorListener;
-import com.android.volley.Response.Listener;
-import com.android.volley.VolleyError;
 import com.tv.ui.metro.loader.TabsGsonLoader;
 import com.tv.ui.metro.menu.MainMenuMgr;
 import com.tv.ui.metro.model.ImageGroup;
 import com.tv.ui.metro.model.Tabs;
-import com.tv.ui.metro.view.EmptyLoadingView;
-import com.tv.ui.metro.view.MetroFragment;
-import com.tv.ui.metro.view.TextViewWithTTF;
-import com.tv.ui.metro.view.UserViewFactory;
+import com.tv.ui.metro.view.*;
 import com.xiaomi.mitv.app.view.UserView;
 
 public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenuCancelListener , LoaderManager.LoaderCallbacks<Tabs> {
@@ -80,8 +75,6 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         if (savedInstanceState != null) {
             mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));
         }
-        
-        volleyLoadData();
     }
 
     //please override this fun
@@ -131,15 +124,15 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         _contents = content;
         
         
-        for(int i=0;i<content.tabs.size();i++) {
+        for(int i=0;i<content.data.size();i++) {
             Bundle args = new Bundle();
-            args.putSerializable("tab",     content.tabs.get(i));
+            args.putSerializable("tab",     content.data.get(i));
             args.putInt("index",            i);
-            args.putInt("tab_count",        content.tabs.size()+1);
+            args.putInt("tab_count",        content.data.size()+1);
             
             //Log.d(TAG, content.tabs.get(i).toString());
 
-            mTabsAdapter.addTab(mTabHost.newTabSpec(content.tabs.get(i).tab.name).setIndicator(newTabIndicator(content.tabs.get(i).tab.name, i==0)),
+            mTabsAdapter.addTab(mTabHost.newTabSpec(content.data.get(i).name).setIndicator(newTabIndicator(content.data.get(i).name, i==0)),
                         MetroFragment.class, args);
 
         }
@@ -147,8 +140,8 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         //for user fragment
         if(isNeedUserTab){
             Bundle args = new Bundle();
-            args.putInt("index",                content.tabs.size());
-            args.putInt("tab_count",            content.tabs.size()+1);
+            args.putInt("index",                content.data.size());
+            args.putInt("tab_count",            content.data.size()+1);
             args.putBoolean("user_fragment", true);
             mTabsAdapter.addTab(mTabHost.newTabSpec(mUserTabName).setIndicator(newTabIndicator(getString(R.string.user_tab), false)), mUserFragmentClass, args);
         }
@@ -176,6 +169,13 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
             @Override
             public int getPadding(Context context) {
                 return getResources().getDimensionPixelSize(R.dimen.user_view_padding);
+            }
+        });
+
+        RecommendCardViewClickListenerFactory.getInstance().setFactory(new RecommendCardViewClickListenerFactory.ClickCreatorFactory() {
+            @Override
+            public View.OnClickListener getRecommendCardViewClickListener() {
+                return null;
             }
         });
     }
@@ -234,7 +234,7 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         if(mMenuReceiver == null) {
             mMenuReceiver = new MenuReceiver();
             IntentFilter filter = new IntentFilter();
-            filter.addAction("com.xiaomi.mitv.gamecenter.action.SEARCH");
+            filter.addAction("com.tv.ui.metro.action.SEARCH");
             registerReceiver(mMenuReceiver, filter);
         }
     }
@@ -328,13 +328,23 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         }
     }
 
+    protected String dataSchemaForSearchString = "misearch://applicationsearch/";
+    protected void setSeachSchema(String schema){
+    	dataSchemaForSearchString = schema;
+    }
+
     public class MenuReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context content, Intent intent) {
             String action = intent.getAction();
-            if( action.equals("com.xiaomi.mitv.gamecenter.action.SEARCH")) {
-                Intent searchIntent = new Intent(getApplicationContext(), SearchActivty.class);
-                startActivity(searchIntent);
+            if( action.equals("com.tv.ui.metro.action.SEARCH")) {
+            	try{
+	                Intent searchIntent = new Intent(Intent.ACTION_VIEW);	                
+	                searchIntent.setData(Uri.parse(dataSchemaForSearchString));
+	                startActivity(searchIntent);
+            	}catch (Exception e) {
+					Log.e(TAG, e.getMessage());
+				}
             }
         }
     }
@@ -445,8 +455,8 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
             mViewPager.setCurrentItem(position);
             switchTabView(position);
 
-            if(position < _contents.tabs.size()) {
-                ImageGroup ig = _contents.tabs.get(position).album.images;
+            if(position < _contents.data.size()) {
+                ImageGroup ig = _contents.data.get(position).images;
                 if (ig != null) {
                     if (ig.back != null && ig.back.url != null) {
                         //VolleyHelper.getInstance(MainActivity.this).getImageLoader().get(ig.back.url, ImageLoader.getCommonViewImageListener(findViewById(R.id.main_tabs_container), 0, 0));
@@ -468,22 +478,7 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         }
         
         private void switchTabView(int index){
-            TabWidget tw = mTabHost.getTabWidget();
-            for(int i=0;i<tw.getChildCount();i++) {
-                View viewC = tw.getChildTabViewAt(i);
-                //Log.d(TAG, "tab width="+viewC.getWidth() + " left="+viewC.getLeft());
-                if(i == index) {
-                    TextViewWithTTF view = (TextViewWithTTF) viewC.findViewById(R.id.tv_tab_indicator);
-                    Resources res = view.getResources();
-                    view.setTextColor(res.getColor(android.R.color.white));
-                    view.setTypeface(null, Typeface.BOLD);
-                }else{
-                    TextViewWithTTF view = (TextViewWithTTF) viewC.findViewById(R.id.tv_tab_indicator);
-                    Resources res = view.getResources();
-                    view.setTextColor(res.getColor(R.color.white_50));
-                    view.setTypeface(null, Typeface.NORMAL);                        
-                }
-            }
+            switchTab(index);
         }
 
         @Override
@@ -508,6 +503,25 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         public void onPageScrollStateChanged(int state) {
         }
     }
+    
+    public void switchTab(int index){
+        TabWidget tw = mTabHost.getTabWidget();
+        for(int i=0;i<tw.getChildCount();i++) {
+            View viewC = tw.getChildTabViewAt(i);
+            //Log.d(TAG, "tab width="+viewC.getWidth() + " left="+viewC.getLeft());
+            if(i == index) {
+                TextViewWithTTF view = (TextViewWithTTF) viewC.findViewById(R.id.tv_tab_indicator);
+                Resources res = view.getResources();
+                view.setTextColor(res.getColor(android.R.color.white));
+                view.setTypeface(null, Typeface.BOLD);
+            }else{
+                TextViewWithTTF view = (TextViewWithTTF) viewC.findViewById(R.id.tv_tab_indicator);
+                Resources res = view.getResources();
+                view.setTextColor(res.getColor(R.color.white_50));
+                view.setTypeface(null, Typeface.NORMAL);                        
+            }
+        }
+    }
 
     public static EmptyLoadingView makeEmptyLoadingView(Context context,  RelativeLayout parentView){
         return makeEmptyLoadingView(context, parentView,  RelativeLayout.CENTER_IN_PARENT);
@@ -521,26 +535,4 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         parentView.addView(loadingView, rlp);
         return loadingView;
     }
-    
-	private void volleyLoadData() {
-		String url = "http://172.27.9.104:9300/testdata/1/1/1/zh/CN?api=index";
-		Listener<Tabs> listener = new Listener<Tabs>() {
-
-			@Override
-			public void onResponse(Tabs response) {
-				Log.d("xxx", "response tabs:" + response);
-			}
-		};
-		ErrorListener errorListener = new ErrorListener() {
-
-			@Override
-			public void onErrorResponse(VolleyError error) {
-				Log.d("xxx", "onErrorResponse error:" + error.toString());
-			}
-		};
-		GsonRequest<Tabs> gsonRequest = new GsonRequest<Tabs>(url, Tabs.class, null, listener,
-				errorListener);
-		VolleyHelper.getInstance(getApplicationContext()).addToRequestQueue(gsonRequest);
-	}
-
 }

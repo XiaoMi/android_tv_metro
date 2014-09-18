@@ -2,6 +2,10 @@
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:background="@drawable/main_bg">
+   <RelativeLayout
+            android:id="@+id/tabs_content"
+            android:layout_width="match_parent" android:layout_height="match_parent"/>
+            
 
     <com.xiaomi.mitv.app.view.TitleBar
             android:id="@+id/detail_title_bar"

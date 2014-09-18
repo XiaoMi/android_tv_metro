@@ -69,6 +69,36 @@ public class Volley {
         return queue;
     }
 
+    public static RequestQueue newRequestQueue(Context context, HttpStack stack, String dir, int cacheSize) {
+        File cacheDir = new File(context.getCacheDir(), dir);
+
+        String userAgent = "volley/0";
+        try {
+            String packageName = context.getPackageName();
+
+            PackageInfo info = context.getPackageManager().getPackageInfo(packageName, 0);
+            userAgent = packageName + "/" + info.versionCode;
+        } catch (NameNotFoundException e) {
+        }
+
+        if (stack == null) {
+            if (Build.VERSION.SDK_INT >= 9) {
+                stack = new HurlStack();
+            } else {
+                // Prior to Gingerbread, HttpUrlConnection was unreliable.
+                // See: http://android-developers.blogspot.com/2011/09/androids-http-clients.html
+                stack = new HttpClientStack(AndroidHttpClient.newInstance(userAgent));
+            }
+        }
+
+        Network network = new BasicNetwork(stack);
+
+        RequestQueue queue = new RequestQueue(new DiskBasedCache(cacheDir, cacheSize), network);
+        queue.start();
+
+        return queue;
+    }
+
     /**
      * Creates a default instance of the worker pool and calls {@link RequestQueue#start()} on it.
      *

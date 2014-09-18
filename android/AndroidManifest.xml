@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DisplayItemActivity">
-            <intent-filter android:priority="-1000">
+            <intent-filter android:priority="-500">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:scheme="micontent" android:host="app" android:pathPrefix="/item"/>
@@ -36,7 +36,7 @@
         </activity>
 
         <activity android:name="com.xiaomi.mitv.app.ApplicationDetailActivity">
-            <intent-filter android:priority="999">
+            <intent-filter android:priority="-500">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:scheme="micontent" android:host="app"   android:pathPrefix="/item"/>
@@ -44,7 +44,7 @@
         </activity>
 
         <activity android:name="com.xiaomi.mitv.app.GameDetailActivity">
-            <intent-filter android:priority="999">
+            <intent-filter android:priority="-500">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:scheme="micontent" android:host="game"   android:pathPrefix="/item"/>
@@ -52,7 +52,7 @@
         </activity>
 
         <activity android:name=".AlbumActivity">
-            <intent-filter android:priority="-1000">
+            <intent-filter android:priority="-500">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:scheme="micontent" android:host="app"   android:pathPrefix="/album"/>
@@ -66,7 +66,7 @@
         </activity>
 
         <activity android:name="com.xiaomi.mitv.app.GameAlbumActivity">
-            <intent-filter android:priority="999">
+            <intent-filter android:priority="-500">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:scheme="micontent" android:host="game"  android:pathPrefix="/album"/>
@@ -75,7 +75,7 @@
         </activity>
 
         <activity android:name="com.xiaomi.mitv.app.ApplicationAlbumActivity">
-            <intent-filter android:priority="999">
+            <intent-filter android:priority="-500">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:scheme="micontent" android:host="app"  android:pathPrefix="/album"/>

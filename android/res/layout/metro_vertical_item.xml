@@ -1,47 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-       android:id="@+id/metro_item_view"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content">
+    android:id="@+id/metro_item_view"
+    android:layout_width="@dimen/ITEM_V_WIDTH"
+    android:layout_height="@dimen/ITEM_V_HEIGHT" >
 
     <com.tv.ui.metro.view.CenterIconImage
-            android:id="@+id/back_ground_imageview"
-            android:layout_width="@dimen/ITEM_V_WIDTH"
-            android:layout_height="@dimen/ITEM_V_HEIGHT"
-            android:scaleType="center"/>
+        android:id="@+id/back_ground_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:scaleType="center" />
 
     <com.tv.ui.metro.view.CenterIconImage
-            android:id="@+id/front_ground_imageview"
+        android:id="@+id/front_ground_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+    <com.tv.ui.metro.view.CenterIconImage
+        android:id="@+id/sub_ground_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <com.tv.ui.metro.view.CenterIconImage
+            android:id="@+id/icon_imageview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"/>
+            android:visibility="gone" />
 
-    <com.tv.ui.metro.view.CenterIconImage
-            android:id="@+id/sub_ground_imageview"
+        <TextView
+            android:id="@+id/labelTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"/>
-
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#ffffff"
+            android:textSize="25dp"
+            android:visibility="gone" />
+    </LinearLayout>
 
     <ImageView
-            android:id="@+id/handler_image_view"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:src="@drawable/operator_handler"
-            android:layout_alignParentBottom="true"
-            android:visibility="gone"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/OPERATOR_MARGIN"
-            android:layout_marginBottom="@dimen/OPERATOR_MARGIN"
-            />
+        android:id="@+id/handler_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/OPERATOR_MARGIN"
+        android:layout_marginRight="@dimen/OPERATOR_MARGIN"
+        android:src="@drawable/operator_handler"
+        android:visibility="gone" />
 
-    <TextView android:id="@+id/recommend_textview" android:background="@drawable/name_mask"
-              android:layout_width="match_parent" android:layout_height="@dimen/metro_item_recommend_text_height"
-              android:textColor="#ccffffff"
-              android:singleLine="true"
-              android:gravity="center_vertical"
-              android:ellipsize="end"
-              android:padding="@dimen/metro_item_padding"
-              android:layout_alignLeft="@id/back_ground_imageview"
-              android:layout_alignParentBottom="true"
-            />
+    <TextView
+        android:id="@+id/recommend_textview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/metro_item_recommend_text_height"
+        android:layout_alignLeft="@id/back_ground_imageview"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/name_mask"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:padding="@dimen/metro_item_padding"
+        android:singleLine="true"
+        android:textColor="#ccffffff" />
+
 </merge>

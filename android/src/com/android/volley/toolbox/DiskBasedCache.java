@@ -18,6 +18,7 @@ package com.android.volley.toolbox;
 
 import android.os.SystemClock;
 
+import android.util.Log;
 import com.android.volley.Cache;
 import com.android.volley.VolleyLog;
 
@@ -229,10 +230,12 @@ public class DiskBasedCache implements Cache {
      * @param key The key to generate a file name for.
      * @return A pseudo-unique filename.
      */
-    private String getFilenameForKey(String key) {
+    public static String getFilenameForKey(String key) {
         int firstHalfLength = key.length() / 2;
         String localFilename = String.valueOf(key.substring(0, firstHalfLength).hashCode());
         localFilename += String.valueOf(key.substring(firstHalfLength).hashCode());
+
+        Log.d("DiskBaseCache", "key=" + key + " filename=" + localFilename);
         return localFilename;
     }
 

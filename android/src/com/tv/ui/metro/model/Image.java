@@ -3,7 +3,7 @@ package com.tv.ui.metro.model;
 import java.io.Serializable;
 
 public class Image implements Serializable {
-    private static final long serialVersionUID = 2L;
+    private static final long serialVersionUID = 3L;
 	public static class Position implements Serializable{		
         private static final long serialVersionUID = 1L;
         public int x;
@@ -61,18 +61,19 @@ public class Image implements Serializable {
 		}
 
 		public Translate translate;
-		public Scale scale;
+		public Scale     scale;
 
         public String toString(){
             StringBuilder sb = new StringBuilder();
             sb.append("Animation: \n\t");
             sb.append("\n\t scale: "+scale);
-            sb.append("\n\t translate: "+translate);
+            sb.append("\n\t translate: "+translate );
 
             return  sb.toString();
         }
 	}
 
+    public String type="image";
 	public String url;
 	public String bgcolor;
 	public Position pos;
@@ -87,7 +88,7 @@ public class Image implements Serializable {
         sb.append(" \turl="+url);
         sb.append(" \tpos="+pos);
         sb.append(" \tsize="+size);
-        
+        sb.append(" \t type: "+type);
         sb.append(" \n\tani="+ani);
         
         return sb.toString();

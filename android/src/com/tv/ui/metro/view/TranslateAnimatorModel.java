@@ -7,17 +7,22 @@ import java.util.List;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.view.View;
+import com.tv.ui.metro.R;
 
 public class TranslateAnimatorModel extends AnimatorModel {
 	
 	private static final int DEFAULT_DELTA = 0;
-	private static final int MAX_X_DELTA = 606;
-	private static final int MAX_Y_DELTA = 300;
+	private static int MAX_X_DELTA = -1;
+	private static int MAX_Y_DELTA = -1;
 	private int mXDelta = DEFAULT_DELTA; // x delta : + to right, - to left
 	private int mYDelta = DEFAULT_DELTA; // y delta : + to up, - to down
 	
 	public TranslateAnimatorModel(View animatorView) {
 		super(animatorView);
+        if(MAX_X_DELTA == -1){
+            MAX_X_DELTA = animatorView.getResources().getDimensionPixelSize(R.dimen.MAX_PIVOT_X);
+            MAX_Y_DELTA = animatorView.getResources().getDimensionPixelSize(R.dimen.MAX_PIVOT_Y);
+        }
 	}
 	
 	public int getXDelta() {

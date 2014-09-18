@@ -17,7 +17,7 @@ public class UserView extends MineView {
 
         initUI();
         setItemTitle(title);
-        setItemSummary("your summary here");
+        setItemSummary(getResources().getString(R.string.mine_info_account_summary_none));
     }
 
     private String         mXiaomiId;

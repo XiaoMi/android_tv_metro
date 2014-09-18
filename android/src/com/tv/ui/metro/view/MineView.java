@@ -13,9 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.VolleyHelper;
 import com.tv.ui.metro.R;
-import com.tv.ui.metro.VolleyHelper;
 
 /**
  * Created by tv metro on 9/2/14.

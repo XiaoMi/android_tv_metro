@@ -177,4 +177,6 @@
     <dimen name="mirror_ref_height">55dp</dimen>
     <dimen name="tab_left_offset">75dp</dimen>
     <dimen name="user_view_padding">6dp</dimen>
+    <dimen name="MAX_PIVOT_X">303dp</dimen>
+    <dimen name="MAX_PIVOT_Y">150dp</dimen>
 </resources>

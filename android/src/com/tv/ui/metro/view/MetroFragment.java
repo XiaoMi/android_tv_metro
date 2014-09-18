@@ -1,5 +1,9 @@
 package com.tv.ui.metro.view;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -8,10 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tv.ui.metro.R;
+import com.tv.ui.metro.model.Album;
 import com.tv.ui.metro.model.DisplayItem;
-import com.tv.ui.metro.model.Tab;
-
-import java.util.ArrayList;
 
 public class MetroFragment extends Fragment {
     private final String TAG = "MetroFragment";
@@ -19,7 +21,7 @@ public class MetroFragment extends Fragment {
     SmoothHorizontalScrollView mHorizontalScrollView;
 	private int tab_count;
 	private int tab_index;
-    private Tab tab;
+    private Album tab;
     private boolean isUserTab = false;
 	
     @Override
@@ -34,11 +36,11 @@ public class MetroFragment extends Fragment {
         mHorizontalScrollView = (SmoothHorizontalScrollView)v.findViewById(R.id.horizontalScrollView);
         mHorizontalScrollView.setFadingEdgeLength(getResources().getDimensionPixelSize(R.dimen.fading_edge));
         mHorizontalScrollView.setSmoothScrollingEnabled(true);
-        mHorizontalScrollView.setFillViewport(true);        
+        mHorizontalScrollView.setFillViewport(true);
 
         //setScrollerTime(400);
 
-        tab = (Tab)this.getArguments().getSerializable("tab");
+        tab = (Album) this.getArguments().getSerializable("tab");        
         mHorizontalScrollView.setTabIndex(tab_index = getArguments().getInt("index", -1));
         mHorizontalScrollView.setTabCount(tab_count = getArguments().getInt("tab_count", -1));        
 
@@ -67,8 +69,11 @@ public class MetroFragment extends Fragment {
                 addView(item,  MetroLayout.Vertical,  0, UserViewFactory.getInstance().getPadding(getActivity()));
             }
         }
-        else if(tab != null && tab.album.items != null){
-            for(DisplayItem item:tab.album.items){
+        else if(tab != null && tab.items != null){
+        	//
+        	Collections.sort(tab.items);
+        	
+            for(DisplayItem item:tab.items){
     
                 int type = MetroLayout.Normal;
                 if(item._ui.layout.w == 2 && item._ui.layout.h ==1)

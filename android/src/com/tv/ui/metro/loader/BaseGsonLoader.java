@@ -1,17 +1,29 @@
 package com.tv.ui.metro.loader;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.Map;
+
 import android.content.Context;
 import android.support.v4.content.Loader;
 import android.text.TextUtils;
 import android.util.Log;
-import com.android.volley.*;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
+import com.android.volley.Request;
+import com.android.volley.Request.Method;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-
-
-import java.io.*;
-import java.util.Map;
+import com.tv.ui.metro.model.DisplayItem;
 
 /**
  * Created by tv metro on 9/1/14.
@@ -19,28 +31,41 @@ import java.util.Map;
 public abstract  class BaseGsonLoader<T> extends Loader<T> {
     private final  String TAG = "BaseGsonLoader";
 
-    private            T       mResult;
+    protected       int page      = 1;
+    protected final int page_size = 20;
+    protected          T       mResult;
     protected volatile boolean mIsLoading;
     private ProgressNotifiable mProgressNotifiable;
     private boolean            mHasDeliveredResult;
 
     protected String cacheFileName = "";
     public abstract void setCacheFileName();
+
+    private static boolean mEnableCache = true;
+    public static void enableCache(boolean _enable){
+        mEnableCache = _enable;
+    }
     
     protected String calledURL = "";
-    public abstract void setLoaderURL();
+    public abstract void setLoaderURL(DisplayItem obj);
 
     public BaseGsonLoader(Context context) {
         super(context);
-        init();
+        init(null);
     }
 
-    private void init(){
+    protected DisplayItem mItem;
+    private void init(DisplayItem item){
         mIsLoading = false;
         mHasDeliveredResult = false;
-        
+        mItem = item; 
         setCacheFileName();
-        setLoaderURL();
+        setLoaderURL(item);
+    }
+
+    public BaseGsonLoader(Context context, DisplayItem item) {
+        super(context);
+        init(item);
     }
 
     public void setProgressNotifiable(ProgressNotifiable progressNotifiable) {
@@ -78,7 +103,7 @@ public abstract  class BaseGsonLoader<T> extends Loader<T> {
     }
 
 
-    Response.Listener<T> listener = new Response.Listener<T>() {
+    protected Response.Listener<T> listener = new Response.Listener<T>() {
         @Override
         public void onResponse(T response) {
             mResult = response;
@@ -92,7 +117,7 @@ public abstract  class BaseGsonLoader<T> extends Loader<T> {
         }
     };
 
-    Response.ErrorListener errorListener = new Response.ErrorListener() {
+    protected Response.ErrorListener errorListener = new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error) {
             Log.d(TAG, "onErrorResponse error:" + error.toString());
@@ -147,7 +172,7 @@ public abstract  class BaseGsonLoader<T> extends Loader<T> {
                 Log.d(TAG, "fromJson take time in ms: " + (timeEnd - timeStart));
                 Response<T> res =  Response.success(fromJson, HttpHeaderParser.parseCacheHeaders(response));
 
-                if(cacheFile != null && cacheFile.length() > 0){
+                if(mEnableCache && cacheFile != null && cacheFile.length() > 0){
                     //save to files
                     updateToFile(cacheFile, json);
                 }

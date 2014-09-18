@@ -1,8 +1,11 @@
 package com.tv.ui.metro.loader;
 
 import android.content.Context;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.android.volley.toolbox.VolleyHelper;
+import com.tv.ui.metro.model.DisplayItem;
 import com.tv.ui.metro.model.Tabs;
 
 /**
@@ -16,8 +19,8 @@ public class TabsGsonLoader extends BaseGsonLoader<Tabs> {
     }
 
     @Override
-    public void setLoaderURL() {
-        calledURL = "http://172.27.9.104:9300/testdata/1/1/1/zh/CN?api=index";
+    public void setLoaderURL(DisplayItem item) {
+        calledURL = "http://appstore.duokanbox.com/v2/app/home";
     }
 
     public TabsGsonLoader(Context context) {
@@ -26,7 +29,7 @@ public class TabsGsonLoader extends BaseGsonLoader<Tabs> {
 
     @Override
     protected void loadDataByGson() {
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext().getApplicationContext());
+        RequestQueue requestQueue = VolleyHelper.getInstance(getContext().getApplicationContext()).getAPIRequestQueue();
         GsonRequest<Tabs> gsonRequest = new GsonRequest<Tabs>(calledURL, Tabs.class, null, listener,  errorListener);
 
         gsonRequest.setCacheNeed(getContext().getCacheDir() + "/" + cacheFileName);

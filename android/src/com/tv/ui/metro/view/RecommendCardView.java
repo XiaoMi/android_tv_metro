@@ -11,8 +11,10 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.BounceInterpolator;
@@ -24,8 +26,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.VolleyHelper;
 import com.tv.ui.metro.R;
-import com.tv.ui.metro.VolleyHelper;
 import com.tv.ui.metro.model.DisplayItem;
 import com.tv.ui.metro.model.DisplayItem.UI;
 import com.tv.ui.metro.model.Image;
@@ -37,9 +39,11 @@ public class RecommendCardView extends RelativeLayout {
 	protected CenterIconImage mBackView;
 	protected CenterIconImage mFrontView;
 	protected CenterIconImage mSubView;
+	protected CenterIconImage mIconView;
 
 	public ImageView mOperationView;
-	public TextView mRecommendTextView;
+	public TextView mBannerTextView;
+	public TextView mLabelTextView;
 
 	public static int ITEM_NORMAL_SIZE = -1;
 	public static int ITEM_H_WIDTH = -1;
@@ -50,23 +54,32 @@ public class RecommendCardView extends RelativeLayout {
 	private int base_res_id;
 	private int default_background_id;
 
-	private boolean showRecommendText = false;
+	private boolean showBannerText = false;
 
 	private DisplayItem mItem;
+	private AnimatorSet mAnimatorSet;
+	private ImageLoader mImageLoader;
 
 	public RecommendCardView bindData(DisplayItem _content) {
 		mItem = _content;
 
-		showRecommendText = UI.METRO_CELL_BANNER.equals(mItem._ui.type);
+		showBannerText = UI.METRO_CELL_BANNER.equals(mItem._ui.type);
+		if (!showBannerText) {
+			mLabelTextView.setText(mItem.name);
+			mLabelTextView.setVisibility(VISIBLE);
+		}
 
+		bindImageLayer(mItem.images.icon, mIconView);
+		bindImageLayer(mItem.images.text, mSubView);
+		bindImageLayer(mItem.images.spirit, mFrontView);
 		bindBackground();
-		bindIcon();
-		bindAnimations();
 
 		return this;
 	}
 
-	private ImageLoader mImageLoader;
+    public DisplayItem getContentData(){
+        return  mItem;
+    }
 
 	public RecommendCardView(Context context, int viewType) {
 		super(context);
@@ -107,17 +120,27 @@ public class RecommendCardView extends RelativeLayout {
 		}
 	}
 
-	/**
-	 * 动画数据
-	 **/
 	private void bindAnimations() {
-		bindAnimation(mItem.images.text, mSubView);
-		bindAnimation(mItem.images.spirit, mFrontView);
-
+		mAnimatorSet = new AnimatorSet();
+		if (mItem.images.spirit != null && mItem.images.spirit.ani != null) {
+			List<ValueAnimator> animators = getAnimators(mItem.images.spirit.ani, mFrontView);
+			for (ValueAnimator animator : animators) {
+				mAnimatorSet.play(animator);
+			}
+		}
+		if (mItem.images.text != null && mItem.images.text.ani != null) {
+			List<ValueAnimator> animators = getAnimators(mItem.images.text.ani, mSubView);
+			for (ValueAnimator animator : animators) {
+				mAnimatorSet.play(animator);
+			}
+		}
 	}
 
-	private void bindAnimation(Image image, ImageView view) {
+	private void bindImageLayer(Image image, ImageView view) {
 		if (image == null || TextUtils.isEmpty(image.url)) {
+            if(view == null){
+                Log.d(TAG, "why here");
+            }
 			view.setVisibility(View.GONE);
 			return;
 		}
@@ -125,7 +148,7 @@ public class RecommendCardView extends RelativeLayout {
 		view.setVisibility(View.VISIBLE);
 
 		if (image.pos != null) {
-			LayoutParams layoutParams = (LayoutParams) view.getLayoutParams();
+			ViewGroup.MarginLayoutParams layoutParams = (MarginLayoutParams) view.getLayoutParams();
 			layoutParams.leftMargin = image.pos.x;
 			layoutParams.bottomMargin = image.pos.y;
 			view.setLayoutParams(layoutParams);
@@ -150,23 +173,19 @@ public class RecommendCardView extends RelativeLayout {
 	}
 
 	private void startAnimation() {
-		mAnimatorSet = new AnimatorSet();
-		if (mItem.images.spirit != null && mItem.images.spirit.ani != null) {
-			List<ValueAnimator> animators = getAnimators(mItem.images.spirit.ani, mFrontView);
-			for (ValueAnimator animator : animators) {
-				mAnimatorSet.play(animator);
-			}
-		}
-		if (mItem.images.text != null && mItem.images.text.ani != null) {
-			List<ValueAnimator> animators = getAnimators(mItem.images.text.ani, mSubView);
-			for (ValueAnimator animator : animators) {
-				mAnimatorSet.play(animator);
-			}
+		if (mAnimatorSet == null) {
+			bindAnimations();
+		} else {
+			mAnimatorSet.cancel();
 		}
 		mAnimatorSet.start();
 	}
 
 	private void reverseAnimation() {
+		if (mAnimatorSet == null) {
+			return;
+		}
+
 		mAnimatorSet.cancel();
 		for (Animator animator : mAnimatorSet.getChildAnimations()) {
 			ValueAnimator valueAnimator = (ValueAnimator) animator;
@@ -233,19 +252,6 @@ public class RecommendCardView extends RelativeLayout {
 		} else {
 			mBackView.setBackgroundResource(default_background_id);
 		}
-	}
-
-	private void bindIcon() {
-		Image icon = mItem.images.icon;
-		if (icon == null) {
-			return;
-		}
-
-		if (TextUtils.isEmpty(icon.url)) {
-			return;
-		}
-
-		mImageLoader.get(icon.url, ImageLoader.getImageListener(mBackView, 0, 0));
 	}
 
 	private boolean useBgColor() {
@@ -315,17 +321,23 @@ public class RecommendCardView extends RelativeLayout {
 	protected void init(Context context) {
 		initDimens();
 		this.setClipChildren(true);
-		LayoutInflater.from(context).inflate(base_res_id, this);
+		View view = LayoutInflater.from(context).inflate(base_res_id, this);
 
-		mOperationView = (ImageView) this.findViewById(R.id.handler_image_view);
-		mRecommendTextView = (TextView) this.findViewById(R.id.recommend_textview);
+		mOperationView = (ImageView) view.findViewById(R.id.handler_image_view);
+		mBannerTextView = (TextView) view.findViewById(R.id.recommend_textview);
+		mLabelTextView = (TextView) view.findViewById(R.id.labelTextView);
 
-		mBackView = (CenterIconImage) this.findViewById(R.id.back_ground_imageview);
-		mRecommendTextView.setVisibility(View.INVISIBLE);
-		this.setOnClickListener(clickListener);
+		mBackView = (CenterIconImage) view.findViewById(R.id.back_ground_imageview);
+		mBannerTextView.setVisibility(View.INVISIBLE);
+        OnClickListener mClick = RecommendCardViewClickListenerFactory.getInstance().getRecommendCardViewClickListener();
+		this.setOnClickListener(mClick==null?clickListener:mClick);
 
-		mFrontView = (CenterIconImage) this.findViewById(R.id.front_ground_imageview);
-		mSubView = (CenterIconImage) this.findViewById(R.id.sub_ground_imageview);
+		mFrontView = (CenterIconImage) view.findViewById(R.id.front_ground_imageview);
+		mSubView = (CenterIconImage) view.findViewById(R.id.sub_ground_imageview);
+		mIconView = (CenterIconImage) view.findViewById(R.id.icon_imageview);
+        if(mIconView == null){
+            Log.d(TAG, "why come here");
+        }
 	}
 
 	OnClickListener clickListener = new OnClickListener() {
@@ -352,13 +364,13 @@ public class RecommendCardView extends RelativeLayout {
 	protected void onFocusChanged(boolean gainFocus, int direction, Rect previouslyFocusedRect) {
 		super.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
 		if (gainFocus) {
-			if (showRecommendText) {
-				mRecommendTextView.setText(mItem.name);
-				mRecommendTextView.setVisibility(View.VISIBLE);
+			if (showBannerText) {
+				mBannerTextView.setText(mItem.name);
+				mBannerTextView.setVisibility(View.VISIBLE);
 			}
 			setSelected(true);
 		} else {
-			mRecommendTextView.setVisibility(View.INVISIBLE);
+			mBannerTextView.setVisibility(View.INVISIBLE);
 			setSelected(false);
 		}
 	}
@@ -375,6 +387,4 @@ public class RecommendCardView extends RelativeLayout {
 			ITEM_V_HEIGHT = getResources().getDimensionPixelSize(R.dimen.ITEM_V_HEIGHT);
 		}
 	}
-
-	private AnimatorSet mAnimatorSet = new AnimatorSet();
 }

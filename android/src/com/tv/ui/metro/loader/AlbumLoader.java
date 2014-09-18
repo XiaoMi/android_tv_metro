@@ -2,6 +2,8 @@ package com.tv.ui.metro.loader;
 
 import android.content.Context;
 
+import com.tv.ui.metro.model.DisplayItem;
+
 /**
  * Created by tv metro on 9/1/14.
  */
@@ -19,7 +21,7 @@ public class AlbumLoader<T> extends BaseGsonLoader<T> {
     }
 
     @Override
-    public void setLoaderURL() {
+    public void setLoaderURL(DisplayItem item) {
 
     }
 

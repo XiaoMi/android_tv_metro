@@ -7,17 +7,24 @@ import java.util.List;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.view.View;
+import com.tv.ui.metro.R;
 
 
 public class ScaleAnimatorModel extends AnimatorModel {
 	
 	public ScaleAnimatorModel(View animatorView) {
 		super(animatorView);
+
+        if(MAX_PIVOT_X == -1) {
+            MAX_PIVOT_X = animatorView.getResources().getDimensionPixelSize(R.dimen.MAX_PIVOT_X);
+            MAX_PIVOT_Y = animatorView.getResources().getDimensionPixelSize(R.dimen.MAX_PIVOT_Y);
+            mPivotY = MAX_PIVOT_Y;
+        }
 	}
 
 	private static final int MIN_PIVOT_X_Y = 0;
-	private static final int MAX_PIVOT_X = 606;
-	private static final int MAX_PIVOT_Y = 300;
+	private static int MAX_PIVOT_X = -1;
+	private static int MAX_PIVOT_Y = -1;
 	
 	private static final float DEFAULT_SCALE = 1.1f;
 	private static final float MIN_SCALE = 0f;
@@ -26,7 +33,7 @@ public class ScaleAnimatorModel extends AnimatorModel {
 	private float mScale = DEFAULT_SCALE;
 	
 	private int mPivotX = MIN_PIVOT_X_Y;
-	private int mPivotY = MAX_PIVOT_Y;
+	private int mPivotY = -1;
 	
 	public int getPivotX() {
 		return mPivotX;

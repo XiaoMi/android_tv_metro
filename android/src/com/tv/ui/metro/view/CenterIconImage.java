@@ -1,6 +1,7 @@
 package com.tv.ui.metro.view;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
@@ -40,16 +41,22 @@ public class CenterIconImage extends ImageView {
 	    }
 	}
 
+    @Override
+    public void setImageBitmap(Bitmap resId) {
+        super.setImageBitmap(resId);
+        notifyListener();
+    }
+
 	@Override
 	public void setImageResource(int resId) {
 		super.setImageResource(resId);
-		notifyListener();
+		//notifyListener();
 	}
 
 	@Override
 	public void setImageDrawable(Drawable drawable) {
 		super.setImageDrawable(drawable);
-		notifyListener();
+		//notifyListener();
 	}
 	
 	//因为该函数方法最终也是调用到setImageDrawable
