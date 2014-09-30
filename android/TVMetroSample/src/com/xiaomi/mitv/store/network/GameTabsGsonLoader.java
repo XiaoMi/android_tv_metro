@@ -7,8 +7,8 @@ import com.tv.ui.metro.model.DisplayItem;
 
 public class GameTabsGsonLoader  extends TabsGsonLoader {
 
-    public GameTabsGsonLoader(Context context) {
-        super(context);
+    public GameTabsGsonLoader(Context context, DisplayItem item) {
+        super(context, item);
     }
 
     @Override

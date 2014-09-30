@@ -51,7 +51,7 @@ public class GameMainActivity extends  MainActivity {
     }
        //please override this fun
     protected void createTabsLoader(){
-        mLoader = new GameTabsGsonLoader(this);
+        mLoader = new GameTabsGsonLoader(this, null);
     }
     
     View.OnClickListener mRecommendCardViewClickListener = new View.OnClickListener() {
@@ -63,12 +63,12 @@ public class GameMainActivity extends  MainActivity {
                 DisplayItem item = rcv.getContentData();
                 if (null != item) {
                     
-                    String target = item.target;
+                    DisplayItem.Target target = item.target;
                     if (null != target) {
-                        if (target.equals("item")) {                            
-                        } else if (target.equals("album")) {                            
-                        } else if (target.equals("billboard")) {                            
-                        } else if (target.equals("category")) {                         
+                        if (target.type.equals("item")) {
+                        } else if (target.type.equals("album")) {
+                        } else if (target.type.equals("billboard")) {
+                        } else if (target.type.equals("category")) {
                         } else {                            
                         }
                         

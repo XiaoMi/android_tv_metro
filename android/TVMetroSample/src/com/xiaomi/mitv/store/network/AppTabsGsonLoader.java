@@ -8,8 +8,8 @@ import android.content.Context;
 
 public class AppTabsGsonLoader extends TabsGsonLoader {
 
-	public AppTabsGsonLoader(Context context) {
-		super(context);
+	public AppTabsGsonLoader(Context context, DisplayItem item) {
+		super(context, item);
 	}
 
 	@Override
