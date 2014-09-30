@@ -1,16 +1,21 @@
 # TV Metro android lib and API
+http://git.n.xiaomi.com/liuhuadong/tvmetro/blob/master/design/app_api.ppt
 
 标签（空格分隔）： android tv metro
 
 ---
 ##1 TV Metro liberary and API
-android lib:
+###android lib:
 supply one framework to build sw540dp metro layout.
 
-API:
+###API:
 server API and data structure.
 
 This framework help you easy to build one TV metro UI style applicaiton. As for detail business data definition, you need handle by your selft.
+
+###Demo images:
+http://git.n.xiaomi.com/liuhuadong/tvmetro/raw/master/design/main.png
+http://git.n.xiaomi.com/liuhuadong/tvmetro/raw/master/design/video.png
 
 
 ##2，android Lib
