@@ -16,7 +16,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-class GsonRequest<T> extends Request<T> {
+public class GsonRequest<T> extends Request<T> {
 	private final Gson gson = new Gson();
 	private final Class<T> clazz;
 	private final Map<String, String> headers;

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,6 +84,7 @@ public class MainMenuController
             return position;
         }
 
+        @SuppressWarnings("deprecation")
         @Override
         public View getView(int position, View convertView, ViewGroup parent)
         {
@@ -93,7 +95,11 @@ public class MainMenuController
 
                 menuItem = (LinearLayout) ((LayoutInflater)parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.menu_item, null);
                 View icon = menuItem.findViewById(R.id.menu_icon);
-                icon.setBackgroundDrawable(mOptions.getIcon(position));
+                if(Build.VERSION.SDK_INT >= 16){
+                    icon.setBackground(mOptions.getIcon(position));
+                }else {
+                    icon.setBackgroundDrawable(mOptions.getIcon(position));
+                }
                 TextSwitcher menuTxt = (TextSwitcher) menuItem.findViewById(R.id.menu_text);
                 menuTxt.setFactory(menuTxtMaker);
                 menuTxt.setAnimateFirstView(false);
@@ -108,7 +114,11 @@ public class MainMenuController
             {
                 menuItem = (LinearLayout) convertView;
                 View icon = menuItem.findViewById(R.id.menu_icon);
-                icon.setBackgroundDrawable(mOptions.getIcon(position));
+                if(Build.VERSION.SDK_INT >= 16){
+                    icon.setBackground(mOptions.getIcon(position));
+                }else {
+                    icon.setBackgroundDrawable(mOptions.getIcon(position));
+                }
                 TextSwitcher menuTxt = (TextSwitcher) menuItem.findViewById(R.id.menu_text);
                 menuTxt.reset();
                 menuTxt.setText(mOptions.getText(position));

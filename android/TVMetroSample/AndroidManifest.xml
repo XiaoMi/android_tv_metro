@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tv.ui.metro.sampleapp"
+    android:versionCode="1"
+    android:versionName="1.0" >
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="16" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.xiaomi.mitv.store.app.AppMainActivity"
+            android:label="@string/app_name"
+            android:icon="@drawable/icon_appstore" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+         <activity
+            android:name="com.xiaomi.mitv.store.GameMainActivity"
+            android:label="@string/game_name"
+            android:icon="@drawable/icon_gamecenter" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+          <activity android:name="com.xiaomi.mitv.app.ApplicationDetailActivity">
+            <intent-filter android:priority="100">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="micontent" android:host="app"   android:pathPrefix="/item"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.xiaomi.mitv.app.GameDetailActivity">
+            <intent-filter android:priority="100">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="micontent" android:host="game"   android:pathPrefix="/item"/>
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="com.xiaomi.mitv.app.VideoDetailActivity">
+            <intent-filter android:priority="100">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="micontent" android:host="video"   android:pathPrefix="/item"/>
+            </intent-filter>
+        </activity>
+        
+        
+        <activity android:name="com.xiaomi.mitv.app.GameAlbumActivity">
+            <intent-filter android:priority="100">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="micontent" android:host="game"  android:pathPrefix="/album"/>
+                <data android:scheme="micontent" android:host="game"  android:pathPrefix="/category"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.xiaomi.mitv.store.ApplicationAlbumActivity">
+            <intent-filter android:priority="100">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="micontent" android:host="app"  android:pathPrefix="/album"/>
+                <data android:scheme="micontent" android:host="app"  android:pathPrefix="/category"/>
+            </intent-filter>
+        </activity>
+        
+         <activity android:name="com.xiaomi.mitv.store.video.VideoAlbumActivity">
+            <intent-filter android:priority="100">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="micontent" android:host="video"  android:pathPrefix="/album"/>
+                <data android:scheme="micontent" android:host="video"  android:pathPrefix="/category"/>
+            </intent-filter>
+        </activity>
+     
+        
+    </application>
+
+</manifest>

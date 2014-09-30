@@ -22,6 +22,15 @@ public class DisplayItem implements Serializable, Comparable<DisplayItem> {
 			public static final String U1x1 = "1x1";
 			public static final String U1x2 = "1x2";
 
+            public Layout clone(){
+                Layout item = new Layout();
+                item.x = x;
+                item.y = y;
+                item.w = w;
+                item.h = h;
+                item.type = type;
+                return item;
+            }
 			public String toString() {
 				return "x: " + x + " y:" + y + " w:" + w + " h:" + h + " type:" + type;
 			}
@@ -32,6 +41,12 @@ public class DisplayItem implements Serializable, Comparable<DisplayItem> {
 		public String type;
 		public Layout layout;
 
+        public UI clone(){
+            UI item = new UI();
+            item.type = type;
+            if(layout != null)item.layout = layout.clone();
+            return  item;
+        }
 		public String toString() {
 			return " type:" + type + "  layout:" + layout;
 		}
@@ -41,12 +56,26 @@ public class DisplayItem implements Serializable, Comparable<DisplayItem> {
 		private static final long serialVersionUID = 1L;
 		public long updated;
 		public long created;
+
+        public Times clone(){
+            Times item = new Times();
+            item.created = created;
+            item.updated = updated;
+            return item;
+        }
 	}
 
     public static class Target implements Serializable{
         private static final long serialVersionUID = 1L;
         public String type;
-        public String params;
+        public String param;
+
+        public Target clone(){
+            Target item = new Target();
+            item.type = type;
+            item.param = param;
+            return  item;
+        }
     }
 
 	public Target target;
@@ -58,6 +87,21 @@ public class DisplayItem implements Serializable, Comparable<DisplayItem> {
 	public UI _ui;
 	public Times times;
 
+    public DisplayItem clone(){
+        DisplayItem item = new DisplayItem();
+
+        if(target != null)item.target = target.clone();
+
+        item.ns   = this.ns;
+        item.type = this.type;
+        item.id   = this.id;
+        item.name = this.name;
+        if(images != null)item.images = this.images.clone();
+        if(_ui != null)item._ui = this._ui.clone();
+        if(times!= null)item.times = times.clone();
+
+        return  item;
+    }
 	public String toString() {
 		return " ns:" + ns + " type:" + type + " target=" + target + " id:" + id + " name:" + name + "images:"
 				+ images + " _ui:" + _ui;

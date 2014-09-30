@@ -30,6 +30,9 @@ public class MetroLayout extends FrameLayout implements View.OnFocusChangeListen
 	List<WeakReference<View>> mViewList = new ArrayList<WeakReference<View>>();
 	HashMap<View, WeakReference<MirrorItemView>> mViewMirrorMap = new HashMap<View, WeakReference<MirrorItemView>>();
 	MetroCursorView mMetroCursorView;
+
+    View mLeftView;
+    View mRightView;
 	
 	float mDensityScale = 1.0f;
     private static int ITEM_V_WIDTH  = -1;
@@ -86,7 +89,22 @@ public class MetroLayout extends FrameLayout implements View.OnFocusChangeListen
         return addItemView(child, celltype , row, DIVIDE_SIZE);
     }
 
+    public void clearItems(){
+        removeAllViews();
+        rowOffset[1]=rowOffset[0]=0;
+        mViewList.clear();
+        mViewMirrorMap.clear();
+        mLeftView = null;
+        mRightView = null;
+    }
+
     public View addItemView(View child, int celltype , int row, int padding){
+        if(mLeftView==null){
+            mLeftView = child;
+        }
+        if(row==0) {
+            mRightView = child;
+        }
 		child.setFocusable(true);
 		child.setOnFocusChangeListener(this);
 		LayoutParams flp;
@@ -292,14 +310,7 @@ public class MetroLayout extends FrameLayout implements View.OnFocusChangeListen
     public void setMetroCursorView(MetroCursorView v){
     	mMetroCursorView = v;
     }
-    
-    public void clearItems(){
-    	removeAllViews();
-    	rowOffset[1]=rowOffset[0]=0;
-    	mViewList.clear();
-    	mViewMirrorMap.clear();
-    	
-    }
+
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
@@ -348,5 +359,21 @@ public class MetroLayout extends FrameLayout implements View.OnFocusChangeListen
         }
         boolean ret = super.dispatchKeyEvent(event);
         return ret;
+    }
+
+    public void focusMoveToLeft(){
+        mLeftView.requestFocus();
+    }
+
+    public void focusMoveToRight(){
+        mRightView.requestFocus();
+    }
+
+    public void focusMoveToPreFocused(){
+        if(lastFocusedView!=null){
+            lastFocusedView.requestFocus();
+        }else {
+            mLeftView.requestFocus();
+        }
     }
 }

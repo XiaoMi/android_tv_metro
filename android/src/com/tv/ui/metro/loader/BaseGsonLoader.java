@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
+import java.net.PortUnreachableException;
 import java.util.Map;
 
 import android.content.Context;
@@ -23,6 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 import com.tv.ui.metro.model.DisplayItem;
 
 /**
@@ -32,7 +35,8 @@ public abstract  class BaseGsonLoader<T> extends Loader<T> {
     private final  String TAG = "BaseGsonLoader";
 
     protected       int page      = 1;
-    protected final int page_size = 20;
+    protected final int page_size = 50;
+    
     protected          T       mResult;
     protected volatile boolean mIsLoading;
     private ProgressNotifiable mProgressNotifiable;
@@ -68,6 +72,9 @@ public abstract  class BaseGsonLoader<T> extends Loader<T> {
         init(item);
     }
 
+    public int getCurrentPage(){
+        return page;
+    }
     public void setProgressNotifiable(ProgressNotifiable progressNotifiable) {
         this.mProgressNotifiable = progressNotifiable;
         if (progressNotifiable != null) {
@@ -121,20 +128,20 @@ public abstract  class BaseGsonLoader<T> extends Loader<T> {
         @Override
         public void onErrorResponse(VolleyError error) {
             Log.d(TAG, "onErrorResponse error:" + error.toString());
-
             mIsLoading = false;
             if (mProgressNotifiable != null) {
                 mProgressNotifiable.stopLoading(dataExists(), false);
             }
+
+            deliverResult(null);
         }
     };
 
     protected abstract void loadDataByGson();
 
-
     public class GsonRequest<T> extends Request<T> {
         private final Gson gson = new Gson();
-        private final Class<T> clazz;
+        private final Type type;
         private final Map<String, String> headers;
         private final Response.Listener<T> listener;
         private String cacheFile;
@@ -143,10 +150,10 @@ public abstract  class BaseGsonLoader<T> extends Loader<T> {
             cacheFile = _cacheFile;
         }
 
-        public GsonRequest(String url, Class<T> clazz, Map<String, String> headers,
+        public GsonRequest(String url, Type type, Map<String, String> headers,
                            Response.Listener<T> listener, Response.ErrorListener errorListener) {
             super(Method.GET, url, errorListener);
-            this.clazz = clazz;
+            this.type = type;
             this.headers = headers;
             this.listener = listener;
         }
@@ -167,7 +174,7 @@ public abstract  class BaseGsonLoader<T> extends Loader<T> {
                 String json = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
                 Log.d(TAG, "response json:" + json);
                 long timeStart = System.currentTimeMillis();
-                T fromJson = gson.fromJson(json, clazz);
+                T fromJson = gson.fromJson(json, type);
                 long timeEnd = System.currentTimeMillis();
                 Log.d(TAG, "fromJson take time in ms: " + (timeEnd - timeStart));
                 Response<T> res =  Response.success(fromJson, HttpHeaderParser.parseCacheHeaders(response));

@@ -69,9 +69,9 @@ public class RecommendCardView extends RelativeLayout {
 			mLabelTextView.setVisibility(VISIBLE);
 		}
 
-		bindImageLayer(mItem.images.icon, mIconView);
-		bindImageLayer(mItem.images.text, mSubView);
-		bindImageLayer(mItem.images.spirit, mFrontView);
+		bindImageLayer(mItem.images.icon(), mIconView);
+		bindImageLayer(mItem.images.text(), mSubView);
+		bindImageLayer(mItem.images.spirit(), mFrontView);
 		bindBackground();
 
 		return this;
@@ -122,14 +122,14 @@ public class RecommendCardView extends RelativeLayout {
 
 	private void bindAnimations() {
 		mAnimatorSet = new AnimatorSet();
-		if (mItem.images.spirit != null && mItem.images.spirit.ani != null) {
-			List<ValueAnimator> animators = getAnimators(mItem.images.spirit.ani, mFrontView);
+		if (mItem.images.spirit() != null && mItem.images.spirit().ani != null) {
+			List<ValueAnimator> animators = getAnimators(mItem.images.spirit().ani, mFrontView);
 			for (ValueAnimator animator : animators) {
 				mAnimatorSet.play(animator);
 			}
 		}
-		if (mItem.images.text != null && mItem.images.text.ani != null) {
-			List<ValueAnimator> animators = getAnimators(mItem.images.text.ani, mSubView);
+		if (mItem.images.text() != null && mItem.images.text().ani != null) {
+			List<ValueAnimator> animators = getAnimators(mItem.images.text().ani, mSubView);
 			for (ValueAnimator animator : animators) {
 				mAnimatorSet.play(animator);
 			}
@@ -255,7 +255,7 @@ public class RecommendCardView extends RelativeLayout {
 	}
 
 	private boolean useBgColor() {
-		Image back = mItem.images.back;
+		Image back = mItem.images.back();
 		if (back == null) {
 			return false;
 		}
@@ -271,7 +271,7 @@ public class RecommendCardView extends RelativeLayout {
 	}
 
 	private boolean useBgImage() {
-		Image back = mItem.images.back;
+		Image back = mItem.images.back();
 		if (back == null) {
 			return false;
 		}
@@ -326,8 +326,10 @@ public class RecommendCardView extends RelativeLayout {
 		mOperationView = (ImageView) view.findViewById(R.id.handler_image_view);
 		mBannerTextView = (TextView) view.findViewById(R.id.recommend_textview);
 		mLabelTextView = (TextView) view.findViewById(R.id.labelTextView);
+        mLabelTextView.setLayerType(View.LAYER_TYPE_SOFTWARE,null);
 
-		mBackView = (CenterIconImage) view.findViewById(R.id.back_ground_imageview);
+
+        mBackView = (CenterIconImage) view.findViewById(R.id.back_ground_imageview);
 		mBannerTextView.setVisibility(View.INVISIBLE);
         OnClickListener mClick = RecommendCardViewClickListenerFactory.getInstance().getRecommendCardViewClickListener();
 		this.setOnClickListener(mClick==null?clickListener:mClick);

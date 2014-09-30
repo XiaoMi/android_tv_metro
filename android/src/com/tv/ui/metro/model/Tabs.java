@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Tabs implements Serializable {
-	private static final long serialVersionUID = 3L;
+	private static final long serialVersionUID = 4L;
 	public ArrayList<Album> data;
-	public long update_time;
+	public long             update_time;
+    public Preload          preload;
 
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

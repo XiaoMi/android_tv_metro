@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">App Market</string>
+    <string name="game_name">Game Center</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="account_info">Account Info</string>
+    <string name="user_handler_helper">Handler Assist</string>
+
+    <string name="account_info_summary">Not login</string>
+    <string name="user_handler_helper_summary">Not connected handler</string>
+
+
+    <string name="mine_info_handle_manager_title">手柄助手</string>
+    <string name="mine_info_account_title">账户信息</string>
+    <string name="mine_info_account_summary_none">您还没有登录</string>
+    <string name="mine_info_handle_manager_summary">已连接%d个手柄</string>
+    <string name="mine_info_game_manager_summary">已安装%d个</string>
+    <string name="mine_info_account_summary_format">%.02f米币</string>
+    <string name="handle_connect_summary_format">已连接%d个</string>
+    <string name="handle_connect_none">您还没有连接手柄</string>
+
+    <string name="connect_handler_title">连接手柄</string>
+    <string name="connected_handler_summary_format">已连接%d个手柄</string>
+    <string name="add_handler_title">添加手柄</string>
+    <string name="add_handler_summary">去添加手柄</string>
+    <string name="buy_handler_title">购买手柄</string>
+    <string name="buy_handler_summary">\u0020\u0020\u0020\u0020您还没有手柄？\n赶快去购买吧</string>
+
+</resources>

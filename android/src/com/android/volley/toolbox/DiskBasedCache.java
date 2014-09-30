@@ -235,7 +235,7 @@ public class DiskBasedCache implements Cache {
         String localFilename = String.valueOf(key.substring(0, firstHalfLength).hashCode());
         localFilename += String.valueOf(key.substring(firstHalfLength).hashCode());
 
-        Log.d("DiskBaseCache", "key=" + key + " filename=" + localFilename);
+        //Log.d("DiskBaseCache", "key=" + key + " filename=" + localFilename);
         return localFilename;
     }
 

@@ -18,6 +18,7 @@ package com.android.volley.toolbox;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
@@ -93,7 +94,7 @@ public class ImageLoader {
      * The default implementation of ImageListener which handles basic functionality
      * of showing a default image until the network response is received, at which point
      * it will switch to either the actual image or the error image.
-     * @param imageView The imageView that the listener is associated with.
+     * @param view The imageView that the listener is associated with.
      * @param defaultImageResId Default image resource ID to use, or 0 if it doesn't exist.
      * @param errorImageResId Error image resource ID to use, or 0 if it doesn't exist.
      */
@@ -109,8 +110,16 @@ public class ImageLoader {
 
             @Override
             public void onResponse(ImageContainer response, boolean isImmediate) {
-                if (response.getBitmap() != null) {
-                    view.setImageBitmap(response.getBitmap());
+                if (response.getBitmap() != null ) {
+                    Object tag = view.getTag();
+                    if(tag != null && tag instanceof String){
+                        String baseURL = (String) tag;
+                        if(baseURL.equals(response.getRequestUrl())){
+                            view.setImageBitmap(response.getBitmap());
+                        }
+                    }else {
+                        view.setImageBitmap(response.getBitmap());
+                    }
                 } else if (defaultImageResId != 0) {
                     view.setImageResource(defaultImageResId);
                 }
@@ -128,10 +137,15 @@ public class ImageLoader {
                 }
             }
 
+            @SuppressWarnings("deprecation")
             @Override
             public void onResponse(ImageContainer response, boolean isImmediate) {
                 if (response.getBitmap() != null) {
-                    view.setBackground(new BitmapDrawable(view.getResources(), response.getBitmap()));
+                    if(Build.VERSION.SDK_INT >= 16){
+                       view.setBackground(new BitmapDrawable(view.getResources(), response.getBitmap()));
+                    }else {
+                        view.setBackgroundDrawable(new BitmapDrawable(view.getResources(), response.getBitmap()));
+                    }
                 } else if (defaultImageResId != 0) {
                     view.setBackgroundResource(defaultImageResId);
                 }
@@ -180,16 +194,6 @@ public class ImageLoader {
         return mCache.getBitmap(cacheKey) != null;
     }
 
-    /**
-     * Returns an ImageContainer for the requested URL.
-     *
-     * The ImageContainer will contain either the specified default bitmap or the loaded bitmap.
-     * If the default was returned, the {@link ImageLoader} will be invoked when the
-     * request is fulfilled.
-     *
-     * @param requestUrl The URL of the image to be loaded.
-     * @param defaultImage Optional default image to return until the actual image is loaded.
-     */
     public ImageContainer get(String requestUrl, final ImageListener listener) {
         return get(requestUrl, listener, 0, 0);
     }
@@ -445,12 +449,6 @@ public class ImageLoader {
         }
     }
 
-    /**
-     * Starts the runnable for batched delivery of responses if it is not already started.
-     * @param cacheKey The cacheKey of the response being delivered.
-     * @param request The BatchedImageRequest to be delivered.
-     * @param error The volley error associated with the request (if applicable).
-     */
     private void batchResponse(String cacheKey, BatchedImageRequest request) {
         mBatchedResponses.put(cacheKey, request);
         // If we don't already have a batch delivery runnable in flight, make a new one.

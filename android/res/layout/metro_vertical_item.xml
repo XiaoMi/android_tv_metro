@@ -23,14 +23,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="30dp"
-        android:gravity="center"
-        android:orientation="horizontal" >
+        android:gravity="center" >
 
         <com.tv.ui.metro.view.CenterIconImage
             android:id="@+id/icon_imageview"
@@ -42,13 +40,15 @@
             android:id="@+id/labelTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/icon_imageview"
+            android:layout_alignBottom="@id/icon_imageview"
+            android:paddingBottom="15dp"
             android:ellipsize="end"
             android:singleLine="true"
             android:textColor="#ffffff"
             android:textSize="25dp"
             android:visibility="gone" />
-    </LinearLayout>
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/handler_image_view"

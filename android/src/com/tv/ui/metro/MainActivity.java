@@ -12,6 +12,7 @@ import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -32,23 +33,31 @@ import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.tv.ui.metro.loader.BaseGsonLoader;
 import com.tv.ui.metro.loader.TabsGsonLoader;
 import com.tv.ui.metro.menu.MainMenuMgr;
+import com.tv.ui.metro.model.DisplayItem;
+import com.tv.ui.metro.model.GenericSubjectItem;
 import com.tv.ui.metro.model.ImageGroup;
-import com.tv.ui.metro.model.Tabs;
 import com.tv.ui.metro.view.*;
 import com.xiaomi.mitv.app.view.UserView;
 
-public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenuCancelListener , LoaderManager.LoaderCallbacks<Tabs> {
+public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenuCancelListener , LoaderManager.LoaderCallbacks<GenericSubjectItem<DisplayItem>> {
     private final static String TAG = "TVMetro-MainActivity";
 
-    protected  TabsGsonLoader mLoader;
+    protected BaseGsonLoader mLoader;
     TabHost    mTabHost;
     TabWidget  mTabs;
     ViewPager  mViewPager;
     TabsAdapter mTabsAdapter;
     EmptyLoadingView mLoadingView;
-    Tabs             _contents;
+    GenericSubjectItem<DisplayItem>   _contents;
+    boolean mTabChanging;
+    int mPrePagerPosition = 0;
+
+    protected DisplayItem albumItem;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +76,9 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         mLoadingView = makeEmptyLoadingView(this, (RelativeLayout)findViewById(R.id.tabs_content));
 
         setScrollerTime(800);
-        
+
+        albumItem = (DisplayItem) getIntent().getSerializableExtra("item");
         setUserFragmentClass();
-        
         getSupportLoaderManager().initLoader(TabsGsonLoader.LOADER_ID, null, this);
 
         if (savedInstanceState != null) {
@@ -79,11 +88,11 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
 
     //please override this fun
     protected void createTabsLoader(){
-        mLoader = new TabsGsonLoader(this);
+        mLoader = new TabsGsonLoader(this, albumItem);
     }
     
     @Override
-    public Loader<Tabs> onCreateLoader(int loaderId, Bundle bundle) {
+    public Loader<GenericSubjectItem<DisplayItem>> onCreateLoader(int loaderId, Bundle bundle) {
         if(loaderId == TabsGsonLoader.LOADER_ID){
         	createTabsLoader();
             mLoader.setProgressNotifiable(mLoadingView);
@@ -93,24 +102,53 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         }
     }
 
+    final static String buildInData="{\"data\":[{\"items\":[{\"target\":{\"type\":\"item\"},\"images\":{\"text\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"icon\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p017VHRusz5g/R2BoGcjC9rNir1.png\",\"ani\":{},\"pos\":{}},\"spirit\":{\"url\":\"\",\"ani\":{},\"pos\":{}}},\"name\":\"高德地图\",\"times\":{\"updated\":1404466152,\"created\":1404454443},\"_ui\":{\"type\":\"metro_cell_banner\",\"layout\":{\"y\":1,\"x\":1,\"w\":1,\"h\":2}},\"id\":\"180\",\"type\":\"item\",\"ns\":\"game\"},{\"target\":{\"type\":\"album\"},\"images\":{\"text\":{\"url\":\"\",\"ani\":{\"translate\":{\"duration\":500,\"y_delta\":-15,\"interpolator\":0,\"startDelay\":0,\"x_delta\":0}},\"pos\":{\"y\":90,\"x\":342}},\"icon\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01rl7EaZ0XN/doB3Y9Zx35fa4W.png\",\"ani\":{},\"pos\":{}},\"spirit\":{\"url\":\"\",\"ani\":{},\"pos\":{\"y\":0,\"x\":48}}},\"name\":\"铁皮人儿童馆\",\"times\":{\"updated\":1401849669,\"created\":0},\"_ui\":{\"type\":\"metro_cell_banner\",\"layout\":{\"y\":1,\"x\":2,\"w\":2,\"h\":1}},\"id\":\"576\",\"type\":\"album\",\"ns\":\"game\"},{\"target\":{\"type\":\"item\"},\"images\":{\"text\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"icon\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01OiJJiUlpr/gmj9vgPhOureuX.png\",\"ani\":{},\"pos\":{}},\"spirit\":{\"url\":\"\",\"ani\":{},\"pos\":{}}},\"name\":\"不可思议的妈妈\",\"times\":{\"updated\":1401850237,\"created\":1378090812},\"_ui\":{\"type\":\"metro_cell_banner\",\"layout\":{\"y\":1,\"x\":5,\"w\":1,\"h\":1}},\"id\":\"176\",\"type\":\"item\",\"ns\":\"game\"},{\"target\":{\"type\":\"item\"},\"images\":{\"text\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"icon\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01shnaa7gKl/98UnssjDNwXMAZ.png\",\"ani\":{},\"pos\":{}},\"spirit\":{\"url\":\"\",\"ani\":{},\"pos\":{}}},\"name\":\"WPS Office\",\"times\":{\"updated\":1387526511,\"created\":1376617877},\"_ui\":{\"type\":\"metro_cell_banner\",\"layout\":{\"y\":2,\"x\":3,\"w\":1,\"h\":1}},\"id\":\"109\",\"type\":\"item\",\"ns\":\"game\"},{\"target\":{\"type\":\"item\"},\"images\":{\"text\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"icon\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01XCW8r0R2l/fkBbsIN6I5wI35.png\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01XCKbqwnYo/KqHUcCcSmzBm0O.png\",\"ani\":{},\"pos\":{}},\"spirit\":{\"url\":\"\",\"ani\":{},\"pos\":{}}},\"name\":\"大众点评\",\"times\":{\"updated\":1401344334,\"created\":1392277260},\"_ui\":{\"type\":\"metro_cell_banner\",\"layout\":{\"y\":2,\"x\":8,\"w\":1,\"h\":1}},\"id\":\"354\",\"type\":\"item\",\"ns\":\"game\"},{\"target\":{\"type\":\"album\"},\"images\":{\"text\":{\"url\":\"\",\"ani\":{},\"pos\":{\"y\":75,\"x\":291}},\"icon\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p019cDUtcXZj/jy0zdtgegX3SUl.png\",\"ani\":{},\"pos\":{}},\"spirit\":{\"url\":\"\",\"ani\":{},\"pos\":{\"y\":0,\"x\":0}}},\"name\":\"铁皮人儿童馆\",\"times\":{\"updated\":1401849669,\"created\":0},\"_ui\":{\"type\":\"metro_cell_banner\",\"layout\":{\"y\":2,\"x\":4,\"w\":2,\"h\":1}},\"id\":\"576\",\"type\":\"album\",\"ns\":\"game\"},{\"target\":{\"type\":\"item\"},\"images\":{\"text\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"icon\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01yDxlUKG1s/bLtew5tzXRluVv.png\",\"ani\":{},\"pos\":{}},\"spirit\":{\"url\":\"\",\"ani\":{},\"pos\":{}}},\"name\":\"布丁酒店\",\"times\":{\"updated\":1399978027,\"created\":1392964753},\"_ui\":{\"type\":\"metro_cell_banner\",\"layout\":{\"y\":2,\"x\":2,\"w\":1,\"h\":1}},\"id\":\"359\",\"type\":\"item\",\"ns\":\"game\"},{\"target\":{\"type\":\"item\"},\"images\":{\"text\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"icon\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01lvwJ5nO0g/NoUqlnpclsuxRs.png\",\"ani\":{},\"pos\":{}},\"spirit\":{\"url\":\"\",\"ani\":{},\"pos\":{}}},\"name\":\"不可思议的妈妈\",\"times\":{\"updated\":1401850237,\"created\":1378090812},\"_ui\":{\"type\":\"metro_cell_banner\",\"layout\":{\"y\":1,\"x\":8,\"w\":1,\"h\":1}},\"id\":\"176\",\"type\":\"item\",\"ns\":\"game\"},{\"target\":{\"type\":\"item\"},\"images\":{\"text\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"icon\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01av5Akioaq/rqODKssj5sWyKj.png\",\"ani\":{},\"pos\":{}},\"spirit\":{\"url\":\"\",\"ani\":{},\"pos\":{}}},\"name\":\"大姨吗\",\"times\":{\"updated\":1399544098,\"created\":1378294032},\"_ui\":{\"type\":\"metro_cell_banner\",\"layout\":{\"y\":1,\"x\":4,\"w\":1,\"h\":1}},\"id\":\"183\",\"type\":\"item\",\"ns\":\"game\"},{\"target\":{\"type\":\"item\"},\"images\":{\"text\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"icon\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01YGuGzzMWm/rV3uxv8scGgVd1.png\",\"ani\":{},\"pos\":{}},\"spirit\":{\"url\":\"\",\"ani\":{},\"pos\":{}}},\"name\":\"旅游攻略\",\"times\":{\"updated\":1410854752,\"created\":1395399765},\"_ui\":{\"type\":\"metro_cell_banner\",\"layout\":{\"y\":1,\"x\":6,\"w\":1,\"h\":1}},\"id\":\"387\",\"type\":\"item\",\"ns\":\"game\"},{\"target\":{\"type\":\"item\"},\"images\":{\"text\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"icon\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01C3W0LR82K/HxLBL7NTIuLWya.png\",\"ani\":{},\"pos\":{}},\"spirit\":{\"url\":\"\",\"ani\":{},\"pos\":{}}},\"name\":\"万花筒相册\",\"times\":{\"updated\":1401950825,\"created\":1401882640},\"_ui\":{\"type\":\"metro_cell_banner\",\"layout\":{\"y\":2,\"x\":6,\"w\":1,\"h\":1}},\"id\":\"241\",\"type\":\"item\",\"ns\":\"game\"},{\"target\":{\"type\":\"item\"},\"images\":{\"text\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"icon\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01JiLwbqnZS/voMex4XV9dXvqm.png\",\"ani\":{},\"pos\":{}},\"spirit\":{\"url\":\"\",\"ani\":{},\"pos\":{}}},\"name\":\"万年历\",\"times\":{\"updated\":1399189032,\"created\":1398650342},\"_ui\":{\"type\":\"metro_cell_banner\",\"layout\":{\"y\":2,\"x\":7,\"w\":1,\"h\":1}},\"id\":\"272\",\"type\":\"item\",\"ns\":\"game\"},{\"target\":{\"type\":\"item\"},\"images\":{\"text\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"icon\":{\"url\":\"\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p014VjmdJ2gi/aO2VnUOhGU2nP9.png\",\"ani\":{},\"pos\":{}},\"spirit\":{\"url\":\"\",\"ani\":{},\"pos\":{}}},\"name\":\"驾考宝典\",\"times\":{\"updated\":1404181894,\"created\":1403775113},\"_ui\":{\"type\":\"metro_cell_banner\",\"layout\":{\"y\":1,\"x\":7,\"w\":1,\"h\":1}},\"id\":\"681\",\"type\":\"item\",\"ns\":\"game\"}],\"images\":{},\"name\":\"推荐\",\"times\":{\"updated\":0,\"created\":0},\"_ui\":{\"type\":\"metro\"},\"id\":\"recommend\",\"type\":\"album\",\"ns\":\"game\"},{\"items\":[{\"target\":{\"type\":\"billboard\"},\"images\":{\"text\":{},\"icon\":{},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p0126XVsd5Gq/2GgC8oaZghOWFd.png\",\"ani\":{},\"pos\":{}},\"spirit\":{}},\"name\":\"图书资讯\",\"times\":{\"updated\":0,\"created\":0},\"_ui\":{\"layout\":{\"y\":1,\"x\":1,\"w\":1,\"h\":2},\"type\":\"metro_cell\"},\"id\":\"7\",\"type\":\"category\",\"ns\":\"game\"},{\"target\":{\"type\":\"category\"},\"images\":{\"text\":{},\"icon\":{},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01d28NYdNuC/5shzAQ1yH28uLU.png\",\"ani\":{},\"pos\":{}},\"spirit\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01hama7b3dq/qob3Q6urR3JDdd.png\",\"ani\":{\"translate\":{\"duration\":500,\"y_delta\":0,\"startDelay\":0,\"interpolator\":0,\"x_delta\":10}},\"pos\":{\"y\":0,\"x\":0}}},\"name\":\"娱乐休闲\",\"times\":{\"updated\":0,\"created\":0},\"_ui\":{\"layout\":{\"y\":1,\"x\":2,\"w\":2,\"h\":1},\"type\":\"metro_cell\"},\"id\":\"1\",\"type\":\"category\",\"ns\":\"game\"},{\"target\":{\"type\":\"category\"},\"images\":{\"text\":{},\"icon\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01HPE9quenU/4v76OTHjvor8pN.png\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01nIJvWYrk4/uL0jexuFYZHVK9.png\",\"ani\":{},\"pos\":{}},\"spirit\":{}},\"name\":\"实用生活\",\"times\":{\"updated\":0,\"created\":0},\"_ui\":{\"layout\":{\"y\":2,\"x\":5,\"w\":1,\"h\":1},\"type\":\"metro_cell\"},\"id\":\"80\",\"type\":\"category\",\"ns\":\"game\"},{\"target\":{\"type\":\"category\"},\"images\":{\"text\":{},\"icon\":{},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01gT26uzM0J/USFXpIjwUIW62q.png\",\"ani\":{},\"pos\":{}},\"spirit\":{}},\"name\":\"教育学习\",\"times\":{\"updated\":0,\"created\":0},\"_ui\":{\"layout\":{\"y\":1,\"x\":4,\"w\":1,\"h\":2},\"type\":\"metro_cell\"},\"id\":\"22\",\"type\":\"category\",\"ns\":\"game\"},{\"target\":{\"type\":\"category\"},\"images\":{\"text\":{},\"icon\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01LzZgiJgql/XmyB1EeSl4TYXg.png\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01dU2NZjNAv/nPZrDmqU4JkAgs.png\",\"ani\":{},\"pos\":{}},\"spirit\":{}},\"name\":\"影音视听\",\"times\":{\"updated\":0,\"created\":0},\"_ui\":{\"layout\":{\"y\":2,\"x\":2,\"w\":1,\"h\":1},\"type\":\"metro_cell\"},\"id\":\"19\",\"type\":\"category\",\"ns\":\"game\"},{\"target\":{\"type\":\"category\"},\"images\":{\"text\":{},\"icon\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p0106nqgJeV9/g3m1kLf0QB3PyV.png\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01FYEhauQdZ/UuKDRarFievkqn.png\",\"ani\":{},\"pos\":{}},\"spirit\":{}},\"name\":\"图书资讯\",\"times\":{\"updated\":0,\"created\":0},\"_ui\":{\"layout\":{\"y\":2,\"x\":3,\"w\":1,\"h\":1},\"type\":\"metro_cell\"},\"id\":\"7\",\"type\":\"category\",\"ns\":\"game\"},{\"target\":{\"type\":\"category\"},\"images\":{\"text\":{},\"icon\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01b4nagMOxj/9rJs162KwT0N7O.png\",\"ani\":{},\"pos\":{}},\"back\":{\"url\":\"http://image.box.xiaomi.com/mfsv2/download/s010/p01h405dti3t/skYNEt5pNJJeOK.png\",\"ani\":{},\"pos\":{}},\"spirit\":{}},\"name\":\"健康健美\",\"times\":{\"updated\":0,\"created\":0},\"_ui\":{\"layout\":{\"y\":1,\"x\":5,\"w\":1,\"h\":1},\"type\":\"metro_cell\"},\"id\":\"81\",\"type\":\"category\",\"ns\":\"game\"}],\"images\":{},\"name\":\"分类\",\"times\":{\"updated\":0,\"created\":0},\"_ui\":{\"type\":\"metro\"},\"id\":\"categories\",\"type\":\"album\",\"ns\":\"game\"}],\"preload\":{\"images\":[\"\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p017VHRusz5g/R2BoGcjC9rNir1.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01rl7EaZ0XN/doB3Y9Zx35fa4W.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01OiJJiUlpr/gmj9vgPhOureuX.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01shnaa7gKl/98UnssjDNwXMAZ.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01XCW8r0R2l/fkBbsIN6I5wI35.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01XCKbqwnYo/KqHUcCcSmzBm0O.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p019cDUtcXZj/jy0zdtgegX3SUl.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01yDxlUKG1s/bLtew5tzXRluVv.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01lvwJ5nO0g/NoUqlnpclsuxRs.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01av5Akioaq/rqODKssj5sWyKj.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01YGuGzzMWm/rV3uxv8scGgVd1.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01C3W0LR82K/HxLBL7NTIuLWya.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01JiLwbqnZS/voMex4XV9dXvqm.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p014VjmdJ2gi/aO2VnUOhGU2nP9.png\",null,\"http://image.box.xiaomi.com/mfsv2/download/s010/p0126XVsd5Gq/2GgC8oaZghOWFd.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01d28NYdNuC/5shzAQ1yH28uLU.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01hama7b3dq/qob3Q6urR3JDdd.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01HPE9quenU/4v76OTHjvor8pN.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01nIJvWYrk4/uL0jexuFYZHVK9.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01gT26uzM0J/USFXpIjwUIW62q.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01LzZgiJgql/XmyB1EeSl4TYXg.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01dU2NZjNAv/nPZrDmqU4JkAgs.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p0106nqgJeV9/g3m1kLf0QB3PyV.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01FYEhauQdZ/UuKDRarFievkqn.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01b4nagMOxj/9rJs162KwT0N7O.png\",\"http://image.box.xiaomi.com/mfsv2/download/s010/p01h405dti3t/skYNEt5pNJJeOK.png\"]},\"update_time\":0}";
     @Override
-    public void onLoadFinished(Loader<Tabs> tabsLoader, Tabs tabs) {
-        if(tabs != null ){
-            updateTabsAndMetroUI(tabs);
-            
-            mTabHost.requestLayout();
+    public void onLoadFinished(Loader<GenericSubjectItem<DisplayItem>> tabsLoader, final GenericSubjectItem<DisplayItem> tabs) {
+        if(tabs != null && tabs.data != null && tabs.data.size() > 0){
+            new Handler().post(new Runnable() {
+                @Override
+                public void run() {
+                    updateTabsAndMetroUI(tabs);
+                    mTabHost.requestLayout();
+                }
+            });
+        }else {
+
+            new Handler().post(new Runnable() {
+                @Override
+                public void run() {
+                    //this is the code for test
+                    mLoadingView.stopLoading(true, false);
+                    //load test code for out of companny
+                    Gson gson = new Gson();
+                    GenericSubjectItem<DisplayItem> fromJson = gson.fromJson(buildInData, new TypeToken<GenericSubjectItem<DisplayItem>>() {
+                    }.getType());
+
+                    updateTabsAndMetroUI(fromJson);
+                    mTabHost.requestLayout();
+                    final View tabView = mTabs.getChildTabViewAt(mViewPager.getCurrentItem());
+                    tabView.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            tabView.requestFocus();
+                        }
+                    });
+                }
+            });
         }
     }
 
     @Override
-    public void onLoaderReset(Loader<Tabs> tabsLoader) {
+    public void onLoaderReset(Loader<GenericSubjectItem<DisplayItem>> tabsLoader) {
 
     }
 
-    //TODO
-    //we need update the content and tab here, when call this
-    //
-    protected void updateTabsAndMetroUI(Tabs content){
+    protected void addVideoTestData(GenericSubjectItem<DisplayItem> _content){
+        Log.d(TAG, "addVideoTestData");
+    }
+
+    protected void updateTabsAndMetroUI(GenericSubjectItem<DisplayItem> content){
         if(_contents != null ){
             if(_contents.update_time == content.update_time) {
                 Log.d(TAG, "same content, no need to update UI");
@@ -121,6 +159,7 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         mViewPager.removeAllViews();
         mTabsAdapter = new TabsAdapter(this, mTabHost, mViewPager);
 
+        addVideoTestData(content);
         _contents = content;
         
         
@@ -138,7 +177,7 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         }
 
         //for user fragment
-        if(isNeedUserTab){
+        if(isNeedUserTab && (albumItem == null || (albumItem != null && albumItem.ns.equals("home")))){
             Bundle args = new Bundle();
             args.putInt("index",                content.data.size());
             args.putInt("tab_count",            content.data.size()+1);
@@ -239,8 +278,7 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         }
     }
 
-    public static void showStatusBar(Context context, boolean isShow){
-
+    protected void showStatusBar(Context context, boolean isShow){
     }
 
     @Override
@@ -317,6 +355,16 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         }else{
         	setScrollerTime(500);
         }
+
+        if(event.getAction() == KeyEvent.ACTION_DOWN && (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_DOWN||event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+            view = this.getCurrentFocus();
+            if(view.getId() == R.id.tv_tab_indicator){
+                MetroFragment fragment = (MetroFragment)mTabsAdapter.getItem(mViewPager.getCurrentItem());
+                fragment.focusMoveToLeft();
+                return true;
+            }
+        }
+
         return super.dispatchKeyEvent(event);
     }
 
@@ -452,26 +500,16 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         @Override
         public void onTabChanged(String tabId) {
             int position = mTabHost.getCurrentTab();
+            mTabChanging = true;
             mViewPager.setCurrentItem(position);
+            mTabChanging = false;
             switchTabView(position);
 
             if(position < _contents.data.size()) {
                 ImageGroup ig = _contents.data.get(position).images;
                 if (ig != null) {
-                    if (ig.back != null && ig.back.url != null) {
+                    if (ig.back() != null && ig.back().url != null) {
                         //VolleyHelper.getInstance(MainActivity.this).getImageLoader().get(ig.back.url, ImageLoader.getCommonViewImageListener(findViewById(R.id.main_tabs_container), 0, 0));
-                    }
-                }
-            }
-            //process the last position
-            View view = getCurrentFocus();
-            if( isContentMoveLeft) {
-                MetroFragment mf = (MetroFragment)fragments.get(new Integer(position));
-                if (mf != null) {
-                    View lastPositionView = mf.getLastPositionView();
-                    Log.d(TAG, "last view = " + lastPositionView);
-                    if (lastPositionView != null) {
-                        lastPositionView.requestFocus();
                     }
                 }
             }
@@ -497,6 +535,30 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
             widget.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
             mTabHost.setCurrentTab(position);
             widget.setDescendantFocusability(oldFocusability);
+            if(!mTabChanging){
+                if(position<mPrePagerPosition) {
+                    MetroFragment mf = (MetroFragment) fragments.get(new Integer(position));
+                    mf.focusMoveToRight();
+                }
+                else if(position>mPrePagerPosition) {
+                    MetroFragment mf = (MetroFragment) fragments.get(new Integer(position));
+                    mf.focusMoveToLeft();
+                }
+            }else{
+                if(position<mPrePagerPosition) {
+                    MetroFragment mf = (MetroFragment) fragments.get(new Integer(position));
+                    mf.scrollToLeft(true);
+                    MetroFragment premf = (MetroFragment) fragments.get(new Integer(mPrePagerPosition));
+                    premf.scrollToLeft(false);
+                }
+                else if(position>mPrePagerPosition) {
+                    MetroFragment mf = (MetroFragment) fragments.get(new Integer(position));
+                    mf.scrollToLeft(false);
+                    MetroFragment premf = (MetroFragment) fragments.get(new Integer(mPrePagerPosition));
+                    premf.scrollToRight(false);
+                }
+            }
+            mPrePagerPosition = position;
         }
 
         @Override

@@ -2,7 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     
-    <string name="app_name">TVMetro</string>
+    <string name="app_name">TVAllInOne</string>
     <string name="fzlt_zhun_hei">FZLTZHUNHEI_GBK.ttf</string>
 	<string name="fzlt_cu_hei">FZLTHC_GBK.ttf</string>
 	

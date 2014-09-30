@@ -8,7 +8,13 @@ public class Image implements Serializable {
         private static final long serialVersionUID = 1L;
         public int x;
 		public int y;
-		
+
+        public Position clone(){
+            Position item = new Position();
+            item.x = x;
+            item.y = y;
+            return item;
+        }
 		public String toString(){
             return "x :"+x + "  y:"+y;
         }
@@ -18,7 +24,13 @@ public class Image implements Serializable {
 	    private static final long serialVersionUID = 1L;
 		public int w;
 		public int h;
-		
+
+        public Size clone(){
+            Size item = new Size();
+            item.w = w;
+            item.h = h;
+            return  item;
+        }
 		public String toString(){
 		    return "w :"+w + "  h:"+h;
 		}
@@ -41,6 +53,16 @@ public class Image implements Serializable {
 			public int x_delta;
 			public int y_delta;
 
+            public Translate clone(){
+                Translate item = new Translate();
+
+                item.duration = duration;
+                item.startDelay = startDelay;
+                item.interpolator = interpolator;
+                item.x_delta = x_delta;
+                item.y_delta = y_delta;
+                return item;
+            }
             public String toString(){
                 return "translate: duration="+duration + " startDelay="+startDelay + " interpolator="+interpolator + " x_delta="+x_delta + " y_delta="+y_delta;
             }
@@ -54,7 +76,17 @@ public class Image implements Serializable {
 			public int pivotX;
 			public int pivotY;
 			public float scale_size;
-			
+
+            public Scale clone(){
+                Scale item = new Scale();
+                item.duration = duration;
+                item.startDelay = startDelay;
+                item.interpolator = interpolator;
+                item.pivotX = pivotX;
+                item.pivotY = pivotY;
+                item.scale_size = scale_size;
+                return  item;
+            }
             public String toString(){
                 return "Scale: duration="+duration + " startDelay="+startDelay + " interpolator="+interpolator + " pivotX="+pivotX + " pivotY="+pivotY + " scale_size="+scale_size;
             }
@@ -63,6 +95,13 @@ public class Image implements Serializable {
 		public Translate translate;
 		public Scale     scale;
 
+        public Ani clone(){
+            Ani item = new Ani();
+
+            if(translate!= null)item.translate = translate.clone();
+            if(scale!= null)item.scale     = scale.clone();
+            return item;
+        }
         public String toString(){
             StringBuilder sb = new StringBuilder();
             sb.append("Animation: \n\t");
@@ -79,7 +118,17 @@ public class Image implements Serializable {
 	public Position pos;
 	public Size size;
 	public Ani ani;
-	
+
+    public Image clone(){
+        Image item = new Image();
+        item.url = url;
+        item.type = type;
+        item.bgcolor = bgcolor;
+        if(pos != null)item.pos = pos.clone();
+        if(size != null)item.size = size.clone();
+        if(ani != null)item.ani = ani.clone();
+        return  item;
+    }
 	public String toString(){
 	    
         StringBuilder sb = new StringBuilder();

@@ -1,0 +1,43 @@
+<resources>
+    
+    <dimen name="tab_highlight_width">75dp</dimen>
+    <dimen name="tab_highlight_height">87dp</dimen>
+    
+    <dimen name="nav_bar_margin_top">20dp</dimen>
+    <dimen name="tab_content_container_margin_top">78dp</dimen>
+
+    <dimen name="tab_recommend_margin_left">75dp</dimen>
+
+    <dimen name="text_size_38">19dp</dimen>
+    <dimen name="text_size_50">25dp</dimen>
+
+    <dimen name="text_tab_padding">30dp</dimen>
+
+    <dimen name="metro_offside">118dp</dimen>
+    <dimen name="fading_edge">118dp</dimen>
+
+    <dimen name="ITEM_NORMAL_SIZE">150dp</dimen>
+    <dimen name="ITEM_H_HEIGHT">150dp</dimen>
+
+    <dimen name="ITEM_V_WIDTH">201dp</dimen>
+    <dimen name="ITEM_V_HEIGHT">303dp</dimen>
+
+    <dimen name="ITEM_H_WIDTH">303dp</dimen>
+
+
+    <dimen name="detail_y_distance">423dp</dimen>
+
+    <dimen name="ITEM_DIVIDE_SIZE">3dp</dimen>
+    <dimen name="OPERATOR_MARGIN">5dp</dimen>
+    <dimen name="metro_item_padding">5dp</dimen>
+    <dimen name="metro_item_recommend_text_height">30dp</dimen>
+    <dimen name="mirror_ref_height">55dp</dimen>
+
+    <dimen name="user_view_padding">6dp</dimen>
+
+    <dimen name="MAX_PIVOT_X">303dp</dimen>
+    <dimen name="MAX_PIVOT_Y">150dp</dimen>
+    <dimen name="item_v_margin_bottom">30dp</dimen>
+    <dimen name="tab_left_offset">75dp</dimen>
+
+</resources>

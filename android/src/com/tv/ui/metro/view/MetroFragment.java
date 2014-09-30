@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.tv.ui.metro.R;
 import com.tv.ui.metro.model.Album;
 import com.tv.ui.metro.model.DisplayItem;
+import com.tv.ui.metro.model.GenericAlbum;
 
 public class MetroFragment extends Fragment {
     private final String TAG = "MetroFragment";
@@ -21,7 +22,7 @@ public class MetroFragment extends Fragment {
     SmoothHorizontalScrollView mHorizontalScrollView;
 	private int tab_count;
 	private int tab_index;
-    private Album tab;
+    private GenericAlbum<DisplayItem> tab;
     private boolean isUserTab = false;
 	
     @Override
@@ -40,7 +41,7 @@ public class MetroFragment extends Fragment {
 
         //setScrollerTime(400);
 
-        tab = (Album) this.getArguments().getSerializable("tab");        
+        tab = (GenericAlbum) this.getArguments().getSerializable("tab");
         mHorizontalScrollView.setTabIndex(tab_index = getArguments().getInt("index", -1));
         mHorizontalScrollView.setTabCount(tab_count = getArguments().getInt("tab_count", -1));        
 
@@ -91,4 +92,43 @@ public class MetroFragment extends Fragment {
         return lastPostionView;
     }
 
+    public void focusMoveToLeft(){
+        mMetroLayout.focusMoveToLeft();
+    }
+
+    public void focusMoveToRight(){
+        mMetroLayout.focusMoveToRight();
+    }
+
+    public void focusMoveToPreFocused(){
+        mMetroLayout.focusMoveToPreFocused();
+    }
+
+    public void scrollToLeft(boolean fullscroll){
+        if(fullscroll) {
+            mHorizontalScrollView.scrollTo(mMetroLayout.getRight(), 0);
+            mHorizontalScrollView.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mHorizontalScrollView.smoothScrollTo(0, 0);
+                }
+            }, 200);
+        }else{
+            mHorizontalScrollView.smoothScrollTo(0, 0);
+        }
+    }
+
+    public void scrollToRight(boolean fullscroll){
+        if(fullscroll) {
+            mHorizontalScrollView.scrollTo(0, 0);
+            mHorizontalScrollView.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mHorizontalScrollView.smoothScrollTo(mMetroLayout.getRight(), 0);
+                }
+            }, 200);
+        }else{
+            mHorizontalScrollView.smoothScrollTo(mMetroLayout.getRight(), 0);
+        }
+    }
 }

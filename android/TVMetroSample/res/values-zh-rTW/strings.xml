@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">应用商店</string>
+    <string name="game_name">游戏中心</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="account_info">账户信息</string>
+    <string name="user_handler_helper">手柄助手</string>
+
+    <string name="account_info_summary">您还没有登录</string>
+    <string name="user_handler_helper_summary">您还没有连接手柄</string>
+
+</resources>
