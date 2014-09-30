@@ -1,60 +1,65 @@
-TV Metro liberary and API
-   android lib:
-   supply one framework to build sw540dp metro layout. 
+# TV Metro android lib and API
 
-   API:
-   server API and data structure.
+标签（空格分隔）： android tv metro
 
-   This framework help you easy to build one TV metro UI style applicaiton. As for detail business data definition, you need handle by your selft.
+---
+##1 TV Metro liberary and API
+android lib:
+supply one framework to build sw540dp metro layout.
 
-2，android Lib    
-   RecommendCardView     Card view
-   GenericSubjectLoader  Loader for album(tabs is one instance of album)   
+API:
+server API and data structure.
 
-3，How to integrate the android lib?
-   you just need inherit MainActity and implement your Tabs Loader.
-   Refer to TVMetroSample application
+This framework help you easy to build one TV metro UI style applicaiton. As for detail business data definition, you need handle by your selft.
 
-4, API and Data Structure for Metro display Item
-sample Home data: 
+
+##2，android Lib
+RecommendCardView Card view
+GenericSubjectLoader Loader for album(tabs is one instance of album)
+
+##3，How to integrate the android lib?
+you just need inherit MainActity and implement your Tabs Loader.
+Refer to TVMetroSample application
+
+##4, API and Data Structure for Metro display Item
+sample Home data:
 https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/home.json
 
 Server API definition refer to:
 https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/home.json
 
-Home display data
+##Home display data
 {
-
     "data": [
         {
-             "items": [ display items ]
-             "images": { },
-             "name": "TAB 1", 
-             "id": "recommend",
-             "type": "album",
-             "ns": "video"
+            "items": [display items],
+            "images": {},
+            "name": "TAB 1",
+            "id": "recommend",
+            "type": "album",
+            "ns": "video"
         },
         {
-             "items": [ display items]
-             "images": { },
-             "name": "TAB 2", 
-             "id": "recommend",
-             "type": "album",
-             "ns": "video"
-        },
+            "items": [display item],
+            "images": {},
+            "name": "TAB 2",
+            "id": "recommend",
+            "type": "album",
+            "ns": "video"
+        }
+    ]
 }
 
-Display Item:
+##Display Item:
 {
-
     "target": {
         "type": "item"
     },
     "images": {
         "back": {
             "url": "",
-            "ani": { },
-            "pos": { }
+            "ani": {},
+            "pos": {}
         }
     },
     "name": "Display Name）",
@@ -74,9 +79,13 @@ Display Item:
     "id": "987722",
     "type": "item",
     "ns": "video"
-},
+}
 
 How to implement your owver server?
 step one:
 1, define your home data
 2, implement your details/list API
+
+
+
+
