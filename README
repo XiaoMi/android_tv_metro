@@ -17,12 +17,13 @@ TV Metro liberary and API
 
 4, API and Data Structure for Metro display Item
 sample Home data: 
-
-<https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/home.json/>
+<p>This is <a href="https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/home.json" title="same Home data">
+an example</a> inline link.</p>
 
 Server API definition refer to:
 
-<http://git.n.xiaomi.com/liuhuadong/tvmetro/blob/master/server/TVMarketAPI.md/>
+<p><a href="https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/home.json" title="API">
+API Definition</a></p>
 
 Home display data
 {
