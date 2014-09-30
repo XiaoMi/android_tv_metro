@@ -1,7 +1,84 @@
-1， lib是什么
-    内容
+TV Metro liberary and API
+   android lib:
+   supply one framework to build sw540dp metro layout. 
 
-2， 特点
-    TV
+   API:
+   server API and data structure.
 
-3， 怎么使用
+   This framework help you easy to build one TV metro UI style applicaiton. As for detail business data definition, you need handle by your selft.
+
+2，android Lib    
+   RecommendCardView     Card view
+   GenericSubjectLoader  Loader for album(tabs is one instance of album)   
+
+3，How to integrate the android lib?
+   you just need inherit MainActity and implement your Tabs Loader.
+   Refer to TVMetroSample application
+
+4, API and Data Structure for Metro display Item
+sample Home data: 
+
+<https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/home.json/>
+
+Server API definition refer to:
+
+<http://git.n.xiaomi.com/liuhuadong/tvmetro/blob/master/server/TVMarketAPI.md/>
+
+Home display data
+{
+
+    "data": [
+        {
+             "items": [ display items ]
+             "images": { },
+             "name": "TAB 1", 
+             "id": "recommend",
+             "type": "album",
+             "ns": "video"
+        },
+        {
+             "items": [ display items]
+             "images": { },
+             "name": "TAB 2", 
+             "id": "recommend",
+             "type": "album",
+             "ns": "video"
+        },
+}
+
+Display Item:
+{
+
+    "target": {
+        "type": "item"
+    },
+    "images": {
+        "back": {
+            "url": "",
+            "ani": { },
+            "pos": { }
+        }
+    },
+    "name": "Display Name）",
+    "times": {
+        "updated": 1409202939,
+        "created": 1409202939
+    },
+    "_ui": {
+        "layout": {
+            "y": 2,
+            "x": 3,
+            "w": 1,
+            "h": 1
+        },
+        "type": "metro_cell_banner"
+    },
+    "id": "987722",
+    "type": "item",
+    "ns": "video"
+},
+
+How to implement your owver server?
+step one:
+1, define your home data
+2, implement your details/list API
