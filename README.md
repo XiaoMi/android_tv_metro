@@ -1,7 +1,7 @@
 # TV Metro android lib and API
 http://git.n.xiaomi.com/liuhuadong/tvmetro/blob/master/design/app_api.ppt
 
-标签（空格分隔）： android tv metro
+android tv metro
 
 ---
 ##1 TV Metro liberary and API
@@ -90,7 +90,3 @@ How to implement your owver server?
 step one:
 1, define your home data
 2, implement your details/list API
-
-
-
-
