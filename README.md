@@ -1,5 +1,5 @@
 # TV Metro android lib and API
-http://git.n.xiaomi.com/liuhuadong/tvmetro/blob/master/design/app_api.ppt
+<a href="http://git.n.xiaomi.com/liuhuadong/tvmetro/blob/master/design/app_api.ppt">Design doc</a>
 
 android tv metro
 
@@ -13,8 +13,8 @@ server API and data structure.
 This framework help you easy to build one TV metro UI style applicaiton. As for detail business data definition, you need handle by your selft.
 
 ###Demo images:
-http://git.n.xiaomi.com/liuhuadong/tvmetro/raw/master/design/main.png
-http://git.n.xiaomi.com/liuhuadong/tvmetro/raw/master/design/video.png
+<img href="http://git.n.xiaomi.com/liuhuadong/tvmetro/raw/master/design/main.png"/>
+<img href="http://git.n.xiaomi.com/liuhuadong/tvmetro/raw/master/design/video.png"/>
 
 
 ##2，android Lib
@@ -26,8 +26,8 @@ you just need inherit MainActity and implement your Tabs Loader.
 Refer to TVMetroSample application
 
 ##4, API and Data Structure for Metro display Item
-sample Home data:
-https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/home.json
+<a href="https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/home.json">sample Home data</a>
+
 
 Server API definition refer to:
 https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/home.json
