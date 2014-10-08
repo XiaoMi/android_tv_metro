@@ -1,5 +1,6 @@
 # TV Metro android lib and API
-<a href="http://git.n.xiaomi.com/liuhuadong/tvmetro/blob/master/design/app_api.ppt">Design doc</a>
+Design doc:
+http://git.n.xiaomi.com/liuhuadong/tvmetro/blob/master/design/app_api.ppt
 
 android tv metro
 
@@ -13,8 +14,8 @@ server API and data structure.
 This framework help you easy to build one TV metro UI style applicaiton. As for detail business data definition, you need handle by your selft.
 
 ###Demo images:
-<img href="http://git.n.xiaomi.com/liuhuadong/tvmetro/raw/master/design/main.png"/>
-<img href="http://git.n.xiaomi.com/liuhuadong/tvmetro/raw/master/design/video.png"/>
+http://git.n.xiaomi.com/liuhuadong/tvmetro/raw/master/design/main.png
+http://git.n.xiaomi.com/liuhuadong/tvmetro/raw/master/design/video.png
 
 
 ##2，android Lib
