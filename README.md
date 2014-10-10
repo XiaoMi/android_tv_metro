@@ -265,3 +265,9 @@ step one:
 1, define your home data
 
 2, implement your details/list API
+
+##Download test APK
+<p>Download test apk, you can run it at android pad or TV</p>
+<a href="https://github.com/AiAndroid/stream/raw/master/tv/game/androidTV.apk">Click Download</a>
+
+##Welcome to <a href="mailto:liuhuadong78@gmail.com">Contact US<a/>
