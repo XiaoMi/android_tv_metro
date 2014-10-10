@@ -1,6 +1,6 @@
 # TV Metro android lib and API
 Design doc:
-http://git.n.xiaomi.com/liuhuadong/tvmetro/blob/master/design/app_api.ppt
+https://github.com/XiaoMi/android_tv_metro/blob/master/design/app_api.ppt
 
 
 #API & Data structure
@@ -242,7 +242,7 @@ https://github.com/XiaoMi/android_tv_metro/raw/master/server/TVMarketAPI.md
 }
 
 
-##1 TV Metro liberary and API
+##TV Metro liberary and API
 ###android lib:
 supply one framework to build sw540dp metro layout.
 
