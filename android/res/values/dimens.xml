@@ -82,4 +82,6 @@
 
     <dimen name="item_v_margin_bottom">20dp</dimen>
     <dimen name="tab_left_offset">50dp</dimen>
+
+    <dimen name="animation_offset_y">16dp</dimen>
 </resources>

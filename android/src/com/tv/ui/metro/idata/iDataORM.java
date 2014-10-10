@@ -4,22 +4,24 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import com.google.gson.Gson;
 
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Created by liuhuadong on 7/7/14.
+ * Created by tv metro on 7/7/14.
  *
  */
 public class iDataORM {
     public static final String AUTHORITY                 = "com.tv.ui.metro";
     public static final Uri SETTINGS_CONTENT_URI         = Uri.parse("content://" + AUTHORITY + "/settings");
+    public static final Uri FAVOR_CONTENT_URI            = Uri.parse("content://" + AUTHORITY + "/favor");
 
-    public static final String is_show_friends            = "is_show_friends";
     private static final String data_collect_interval     = "data_collect_interval";
-
-    private static  String TAG = "iDataCenterORM";
+    private static  String TAG = "iDataORM";
 
     private static iDataORM _instance;
     public static iDataORM getInstance(Context con){
@@ -28,11 +30,6 @@ public class iDataORM {
         }
 
         return _instance;
-    }
-
-    //Hope I can get from server
-    public static boolean showFriends(Context context){
-        return  getBooleanValue(context, is_show_friends, false);
     }
 
     private Context mContext;
@@ -47,15 +44,98 @@ public class iDataORM {
             "value",
     };
 
-    public long getLastDataCollectionTime() {
-        long lastSyncTime = 0;
-        String value = this.getSettingValue(is_show_friends);
-        if(value != null){
-            try {
-                lastSyncTime = Long.valueOf(value);
-            }catch (Exception ne){}
+    public static String[]favorProject =  new String[]{
+            "_id",
+            "res_id",
+            "ns",
+            "value",
+            "date_time"
+    };
+
+    public static class FavorCol{
+        public static final String ID         = "_id";
+        public static final String RES_ID     = "res_id";
+        public static final String NS         = "ns";
+        public static final String VALUE      = "value";
+        public static final String ChangeDate = "date_time";
+    }
+
+    public static class Favoritor<T>{
+        public int    id;
+        public String res_id;
+        public String ns;
+        public String json;
+        public Object object;
+        public String date;
+
+        public static <T> T parseJson(Gson gson, String json, Type type){
+            return gson.fromJson(json, type);
         }
-        return lastSyncTime;
+    }
+
+    public static Uri addFavor(Context context, String ns, String res_id, String json){
+        Uri ret = null;
+        ContentValues ct = new ContentValues();
+        ct.put(FavorCol.RES_ID, res_id);
+        ct.put(FavorCol.NS,     ns);
+        ct.put(FavorCol.VALUE,  json);
+        ct.put(SettingsCol.ChangeDate, dateToString(new Date()));
+        //if exist, update
+        if(true == existFavor(context, ns, res_id)){
+            updateFavor(context, ct);
+        }else{
+            ret = context.getContentResolver().insert(FAVOR_CONTENT_URI, ct);
+        }
+        return ret;
+    }
+
+    public static boolean updateFavor(Context context, ContentValues ct) {
+        boolean ret = false;
+        String where = String.format(" ns = \'%1$s\' and res_id = \'%2$s\' ", ct.get(FavorCol.NS), ct.get(FavorCol.RES_ID));
+        if(context.getContentResolver().update(FAVOR_CONTENT_URI, ct, where, null) > 0){
+            ret = true;
+        }
+        return ret;
+    }
+
+    public static boolean existFavor(Context context, String ns, String res_id){
+        boolean exist = false;
+        String where = FavorCol.NS +"='"+ns+"' and " + FavorCol.RES_ID + " ='" + res_id + "'";
+        Cursor cursor = context.getContentResolver().query(FAVOR_CONTENT_URI, new String[]{"_id"}, where, null, null);
+        if(cursor != null ){
+            if(cursor.getCount() > 0){
+                exist = true;
+            }
+            cursor.close();
+            cursor = null;
+        }
+        return exist;
+    }
+
+    public static int removeFavor(Context context, String ns, String res_id){
+        String where = FavorCol.NS +"='"+ns+"' and " + FavorCol.RES_ID + " ='" + res_id + "'";
+        int lens = context.getContentResolver().delete(FAVOR_CONTENT_URI, where, null);
+        return lens;
+    }
+
+    public static ArrayList<Favoritor> getFavorites(Context context, String ns){
+        ArrayList<Favoritor> favoritors = new ArrayList<Favoritor>();
+        String where = FavorCol.NS +"='"+ns + "'";
+        Cursor cursor = context.getContentResolver().query(FAVOR_CONTENT_URI, favorProject, where, null, null);
+        if(cursor != null ){
+            while(cursor.moveToNext()){
+                Favoritor item = new Favoritor();
+                item.id     = cursor.getInt(cursor.getColumnIndex(FavorCol.ID));
+                item.res_id = cursor.getString(cursor.getColumnIndex(FavorCol.RES_ID));
+                item.ns     = cursor.getString(cursor.getColumnIndex(FavorCol.NS));
+                item.json   = cursor.getString(cursor.getColumnIndex(FavorCol.VALUE));
+                item.date   = cursor.getString(cursor.getColumnIndex(FavorCol.ChangeDate));
+                favoritors.add(item);
+            }
+            cursor.close();
+            cursor = null;
+        }
+        return favoritors;
     }
 
     public int getDataCollectionInterval(int defaultValue) {

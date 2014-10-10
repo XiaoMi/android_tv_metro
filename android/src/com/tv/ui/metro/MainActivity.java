@@ -41,6 +41,7 @@ import com.tv.ui.metro.menu.MainMenuMgr;
 import com.tv.ui.metro.model.DisplayItem;
 import com.tv.ui.metro.model.GenericSubjectItem;
 import com.tv.ui.metro.model.ImageGroup;
+import com.tv.ui.metro.utils.ViewUtils;
 import com.tv.ui.metro.view.*;
 import com.xiaomi.mitv.app.view.UserView;
 
@@ -84,6 +85,12 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
         if (savedInstanceState != null) {
             mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ViewUtils.unbindDrawables(findViewById(R.id.main_tabs_container));
     }
 
     //please override this fun
@@ -161,8 +168,8 @@ public class MainActivity extends FragmentActivity implements MainMenuMgr.OnMenu
 
         addVideoTestData(content);
         _contents = content;
-        
-        
+
+
         for(int i=0;i<content.data.size();i++) {
             Bundle args = new Bundle();
             args.putSerializable("tab",     content.data.get(i));

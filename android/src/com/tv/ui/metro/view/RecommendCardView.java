@@ -1,13 +1,11 @@
 package com.tv.ui.metro.view;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.text.TextUtils;
@@ -15,16 +13,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.BounceInterpolator;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
-import android.view.animation.LinearInterpolator;
+import android.view.animation.*;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.VolleyHelper;
 import com.tv.ui.metro.R;
@@ -32,6 +24,9 @@ import com.tv.ui.metro.model.DisplayItem;
 import com.tv.ui.metro.model.DisplayItem.UI;
 import com.tv.ui.metro.model.Image;
 import com.tv.ui.metro.model.Image.Ani;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecommendCardView extends RelativeLayout {
 
@@ -51,6 +46,7 @@ public class RecommendCardView extends RelativeLayout {
 
 	public static int ITEM_V_WIDTH = -1;
 	public static int ITEM_V_HEIGHT = -1;
+    public static int ANIMATION_OFFSET_Y = 0;
 	private int base_res_id;
 	private int default_background_id;
 
@@ -150,7 +146,7 @@ public class RecommendCardView extends RelativeLayout {
 		if (image.pos != null) {
 			ViewGroup.MarginLayoutParams layoutParams = (MarginLayoutParams) view.getLayoutParams();
 			layoutParams.leftMargin = image.pos.x;
-			layoutParams.bottomMargin = image.pos.y;
+			layoutParams.topMargin = getHeight()-image.pos.y-ANIMATION_OFFSET_Y;
 			view.setLayoutParams(layoutParams);
 		}
 
@@ -326,7 +322,7 @@ public class RecommendCardView extends RelativeLayout {
 		mOperationView = (ImageView) view.findViewById(R.id.handler_image_view);
 		mBannerTextView = (TextView) view.findViewById(R.id.recommend_textview);
 		mLabelTextView = (TextView) view.findViewById(R.id.labelTextView);
-        mLabelTextView.setLayerType(View.LAYER_TYPE_SOFTWARE,null);
+
 
 
         mBackView = (CenterIconImage) view.findViewById(R.id.back_ground_imageview);
@@ -340,6 +336,10 @@ public class RecommendCardView extends RelativeLayout {
         if(mIconView == null){
             Log.d(TAG, "why come here");
         }
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+       /// mBannerTextView.setLayerType(View.LAYER_TYPE_SOFTWARE,paint);
+       // mLabelTextView.setLayerType(View.LAYER_TYPE_SOFTWARE,paint);
 	}
 
 	OnClickListener clickListener = new OnClickListener() {
@@ -369,11 +369,16 @@ public class RecommendCardView extends RelativeLayout {
 			if (showBannerText) {
 				mBannerTextView.setText(mItem.name);
 				mBannerTextView.setVisibility(View.VISIBLE);
+                mLabelTextView.setScaleX(1.1f);
+                mLabelTextView.setScaleY(1.1f);
 			}
 			setSelected(true);
 		} else {
 			mBannerTextView.setVisibility(View.INVISIBLE);
 			setSelected(false);
+            mLabelTextView.setScaleX(1.0f);
+            mLabelTextView.setScaleY(1.0f);
+
 		}
 	}
 
@@ -387,6 +392,8 @@ public class RecommendCardView extends RelativeLayout {
 
 			ITEM_V_WIDTH = getResources().getDimensionPixelSize(R.dimen.ITEM_V_WIDTH);
 			ITEM_V_HEIGHT = getResources().getDimensionPixelSize(R.dimen.ITEM_V_HEIGHT);
+
+            ANIMATION_OFFSET_Y = getResources().getDimensionPixelSize(R.dimen.animation_offset_y);
 		}
 	}
 }

@@ -106,7 +106,7 @@ public class MetroCursorView extends View {
 				mDrawableShadow.setAlpha((int)(255*(scale-1)*10));
 		    	mDrawableShadow.draw(canvas); 
 		    	mDrawableWhite.getPadding(padding);
-		    	mDrawableWhite.setBounds(-padding.left-2, -padding.top-2, width+padding.right+2, height+padding.bottom+2);
+		    	mDrawableWhite.setBounds(-padding.left-1, -padding.top-1, width+padding.right+1, height+padding.bottom+1);
 		    	mDrawableWhite.setAlpha((int)(255*(scale-1)*10));
 		    	mDrawableWhite.draw(canvas);
 

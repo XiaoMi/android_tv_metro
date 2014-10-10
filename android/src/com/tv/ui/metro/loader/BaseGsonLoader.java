@@ -128,6 +128,11 @@ public abstract  class BaseGsonLoader<T> extends Loader<T> {
         @Override
         public void onErrorResponse(VolleyError error) {
             Log.d(TAG, "onErrorResponse error:" + error.toString());
+            //means load from next page
+            if(page > 1){
+                page--;
+            }
+
             mIsLoading = false;
             if (mProgressNotifiable != null) {
                 mProgressNotifiable.stopLoading(dataExists(), false);

@@ -15,15 +15,16 @@ import android.text.TextUtils;
  * local database save
  */
 public class iDataProvider extends ContentProvider {
-    private static final String     TAG              = "iDataGameProvider";
-    public static final String      DATABASE_NAME    = "idatagame.db";
-    public static final int         DATABASE_VERSION = 10;
+    private static final String     TAG              = "iDataProvider";
+    public static final String      DATABASE_NAME    = "idata.db";
+    public static final int         DATABASE_VERSION = 1;
     public static final String      AUTHORITY        = iDataORM.AUTHORITY;
     public static SQLiteOpenHelper mOpenHelper;
 
     private static final String     TABLE_SETTINGS   = "settings";
+    private static final String     TABLE_Favor      = "favor";
 
-    public static final String _ID = "_id";
+    public static final String _ID   = "_id";
     public static final String NAME  = "name";
     public static final String VALUE = "value";
 
@@ -54,12 +55,20 @@ public class iDataProvider extends ContentProvider {
                         + " application TEXT,"
                         + " date_time TEXT);");
 
+                db.execSQL("CREATE TABLE " + TABLE_Favor + " ("
+                        + " _id      INTEGER PRIMARY KEY AUTOINCREMENT,"
+                        + " res_id   TEXT, "
+                        + " ns       TEXT,"
+                        + " value    TEXT,"
+                        + " date_time TEXT);");
+
             }catch (Exception ne){}
         }
 
         private void dropTables(SQLiteDatabase db) {
             try {
                 db.execSQL("DROP TABLE IF EXISTS " + TABLE_SETTINGS);
+                db.execSQL("DROP TABLE IF EXISTS " + TABLE_Favor);
             }catch (Exception ne){}
         }
 
@@ -74,6 +83,7 @@ public class iDataProvider extends ContentProvider {
             try {
                 try {
                     db.execSQL("DROP TABLE IF EXISTS " + TABLE_SETTINGS);
+                    db.execSQL("DROP TABLE IF EXISTS " + TABLE_Favor);
                 }catch (Exception ne){}
 
                 onCreate(db);

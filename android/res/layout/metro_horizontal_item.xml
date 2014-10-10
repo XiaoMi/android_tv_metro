@@ -46,7 +46,7 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:textColor="#ffffff"
-            android:textSize="25dp"
+            android:textSize="@dimen/text_size_50"
             android:visibility="gone" />
     </LinearLayout>
 
