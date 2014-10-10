@@ -13,25 +13,17 @@ server API and data structure.
 
 This framework help you easy to build one TV metro UI style applicaiton. As for detail business data definition, you need handle by your selft.
 
-###Demo images:
-<img src="https://github.com/XiaoMi/android_tv_metro/raw/master/design/main.png"/>
-<img src="https://github.com/XiaoMi/android_tv_metro/raw/master/design/video.png"/>
 
-
-##2，android Lib
+##android Lib
 RecommendCardView Card view
 GenericSubjectLoader Loader for album(tabs is one instance of album)
 
-##3，How to integrate the android lib?
+##How to integrate the android lib?
 you just need inherit MainActity and implement your Tabs Loader.
 Refer to TVMetroSample application
 
-##4, API and Data Structure for Metro display Item
-<a href="https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/home.json">sample Home data</a>
 
 
-Server API definition refer to:
-https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/home.json
 
 ##Home display data
 {
@@ -84,6 +76,190 @@ https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/home.json
     "id": "987722",
     "type": "item",
     "ns": "video"
+}
+
+
+#Design for TV metro demo
+the Metro style is constructed by two kinds of elements:
+Album and Display Item
+
+Album can contain multi albums and display items.
+
+Display item can be defined as video, game, app, music and so on.
+
+You can deprive your own game/app/video detail item from display item.
+
+                             Album
+                               |
+             __________________|___________________
+             |    ...  |           |       ...    |
+           Album      Album    Display Item     Display Item
+           
+ The main page is also defined as Album.
+ 
+##API Style
+###API description
+http://host/v1/ns/type/?id=res_id
+
+ns  : namespace, resource type
+
+type: item or item list
+
+id  : resource id in back-end server system  
+
+###Details
+http://host/game(video/app)/item?id=12346
+return item list
+
+###Album
+http://host/game(video/app)/album?id=6464
+return album
+
+###Category
+http://host/game(video/app)/category?id=123456
+return album
+ 
+Note:
+Album and Category are most same concept. 
+
+##Tab "app/game"
+
+<img src="https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/en/app_en.png" />
+
+##Tab "video" 
+
+<img src="https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/en/video_en.png"/>
+
+##Tab "video category"
+
+<img src="https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/en/video_list_en.png"/>
+
+##Home JSON definition
+<p>
+<a href="https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/home.json">Home JSON Sample</a>
+</p>
+
+Server API definition refer to:
+https://github.com/XiaoMi/android_tv_metro/raw/master/server/TVMarketAPI.md
+
+##Album
+{
+
+    "data": [
+        {
+            "items": [display items],
+            "images": { },
+            "name":"game tab name",
+            "times": {
+                "updated": 0,
+                "created": 0
+            },
+            "_ui": {
+                "type": "metro"
+            },
+            "id": "recommend",
+            "type": "album",
+            "ns": "game"
+        },
+        {
+            "items": [display items],
+            "images": { },
+            "name": "game tab Name",
+            "times": {
+                "updated": 0,
+                "created": 0
+            },
+            "_ui": {
+                "type": "metro"
+            },
+            "id": "categories",
+            "type": "album",
+            "ns": "game"
+        },
+        {
+            "items": [dispay items],
+            "images": { },
+            "name": "video tab name",
+            "times": {
+                "updated": 0,
+                "created": 0
+            },
+            "_ui": {
+                "type": "metro"
+            },
+            "id": "recommend",
+            "type": "album",
+            "ns": "video"
+        },
+        {
+            "items": [display items],
+            "images": { },
+            "name": "video tab name",
+            "times": {
+                "updated": 0,
+                "created": 0
+            },
+            "_ui": {
+                "type": "metro"
+            },
+            "id": "categories",
+            "type": "album",
+            "ns": "video"
+        }
+    ],
+    "preload": {
+        "images": []
+    },
+    "update_time": 0
+
+}
+
+##Display Item
+
+    {
+        
+    "target": {
+        "type": "item"
+    },
+    "images": {
+        "text": {
+            "url": "",
+            "ani": {},
+            "pos": {}
+        },
+        "icon": {
+            "url": "",
+            "ani": {},
+            "pos": {}
+        },
+        "back": {
+            "url": "http://xxx/fffff.png",
+            "ani": {},
+            "pos": {}
+        },
+        "spirit": {
+            "url": "",
+            "ani": {},
+            "pos": {}
+        }
+    },
+    "name": "name",
+    "times": {
+        "updated": 1404466152,
+        "created": 1404454443
+    },
+    "_ui": {
+        "type": "metro_cell_banner",
+        "layout": {
+            "y": 1,
+            "x": 1,
+            "w": 1,
+            "h": 2
+        }
+    },
+    "id": "180",
+    "type": "item",
+    "ns": "game"
 }
 
 How to implement your owver server?
