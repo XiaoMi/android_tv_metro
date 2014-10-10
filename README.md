@@ -14,8 +14,8 @@ server API and data structure.
 This framework help you easy to build one TV metro UI style applicaiton. As for detail business data definition, you need handle by your selft.
 
 ###Demo images:
-http://git.n.xiaomi.com/liuhuadong/tvmetro/raw/master/design/main.png
-http://git.n.xiaomi.com/liuhuadong/tvmetro/raw/master/design/video.png
+<img src="http://git.n.xiaomi.com/liuhuadong/tvmetro/raw/master/design/main.png"/>
+<img src="http://git.n.xiaomi.com/liuhuadong/tvmetro/raw/master/design/video.png"/>
 
 
 ##2，android Lib
