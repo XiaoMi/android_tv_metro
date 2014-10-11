@@ -1,6 +1,6 @@
 # TV Metro android lib and API
 Design doc:
-https://github.com/XiaoMi/android_tv_metro/blob/master/design/app_api.ppt
+https://github.com/XiaoMi/android_tv_metro/raw/master/design/app_api.ppt
 
 
 #API & Data structure
