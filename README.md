@@ -3,7 +3,7 @@ Design doc:
 https://github.com/XiaoMi/android_tv_metro/raw/master/design/app_api.ppt
 
 
-#API & Data structure
+# API & Data structure
 the Metro style is constructed by two kinds of elements:
 Album and Display Item
 
@@ -21,8 +21,8 @@ You can deprive your own game/app/video detail item from display item.
            
  The main page is also defined as Album.
  
-#API Style
-#API description
+# API Style
+# API description
 http://host/v1/ns/type/?id=res_id
 
 ns  : namespace, resource type
@@ -31,34 +31,34 @@ type: item or item list
 
 id  : resource id in back-end server system  
 
-#Details
+# Details
 http://host/game(video/app)/item?id=12346
 return item list
 
-#Album
+# Album
 http://host/game(video/app)/album?id=6464
 return album
 
-#Category
+# Category
 http://host/game(video/app)/category?id=123456
 return album
  
-#Note:
+# Note:
 Album and Category are most same concept. 
 
-#Tab "app/game"
+# Tab "app/game"
 
 <img src="https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/en/app_en.png" />
 
-#Tab "video" 
+# Tab "video" 
 
 <img src="https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/en/video_en.png"/>
 
-#Tab "video category"
+# Tab "video category"
 
 <img src="https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/en/video_list_en.png"/>
 
-#Home JSON definition
+# Home JSON definition
 <p>
 <a href="https://raw.githubusercontent.com/AiAndroid/stream/master/tv/game/home.json">Home JSON Sample</a>
 </p>
@@ -67,7 +67,7 @@ Server API definition refer to:
 https://github.com/XiaoMi/android_tv_metro/raw/master/server/TVMarketAPI.md
 
 
-#Home display data
+# Home display data
 {
     "data": [
         {
@@ -89,7 +89,7 @@ https://github.com/XiaoMi/android_tv_metro/raw/master/server/TVMarketAPI.md
     ]
 }
 
-#Display Item:
+# Display Item:
 {
     "target": {
         "type": "item"
@@ -121,7 +121,7 @@ https://github.com/XiaoMi/android_tv_metro/raw/master/server/TVMarketAPI.md
 }
 
 
-#Album
+# Album
 {
 
     "data": [
@@ -193,7 +193,7 @@ https://github.com/XiaoMi/android_tv_metro/raw/master/server/TVMarketAPI.md
 
 }
 
-#Display Item
+# Display Item
 
     {
         
@@ -242,32 +242,32 @@ https://github.com/XiaoMi/android_tv_metro/raw/master/server/TVMarketAPI.md
 }
 
 
-#TV Metro liberary and API
-#android lib:
+# TV Metro liberary and API
+# android lib:
 supply one framework to build sw540dp metro layout.
 
-#API:
+# API:
 server API and data structure.
 
 This framework help you easy to build one TV metro UI style applicaiton. As for detail business data definition, you need handle by your selft.
 
 
-#android Lib
+# Android Lib
 RecommendCardView Card view
 GenericSubjectLoader Loader for album(tabs is one instance of album)
 
-#How to integrate the android lib?
+# How to integrate the android lib?
 you just need inherit MainActity and implement your Tabs Loader.
 Refer to TVMetroSample application
 
 How to implement your owver server?
 step one:
-1, define your home data
+1. define your home data
 
-2, implement your details/list API
+2. implement your details/list API
 
-#Download test APK
+# Download test APK
 <p>Download test apk, you can run it at android pad or TV</p>
 <a href="https://github.com/AiAndroid/stream/raw/master/tv/game/androidTV.apk">Click Download</a>
 
-#Welcome to <a href="mailto:liuhuadong78@gmail.com">Contact US<a/>
+# Welcome to <a href="mailto:liuhuadong78@gmail.com">Contact US<a/>
